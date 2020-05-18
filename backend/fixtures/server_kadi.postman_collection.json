@@ -1,0 +1,187 @@
+{
+  "info": {
+    "_postman_id": "e4ea2314-7acb-4d5a-b32a-51b2a3e52e32",
+    "name": "server_kadi",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "localhost:3000/api/cours",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:3000/api/cours",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "cours"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:3000/api/cours/",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:3000/api/cours/",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "cours",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:3000/api/cours",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "dateCour",
+              "value": "2022-05-16 00:00:00",
+              "type": "text"
+            },
+            {
+              "key": "heureCour",
+              "value": "2022-05-16 00:00:00",
+              "type": "text"
+            },
+            {
+              "key": "eleveId",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "profId",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "id",
+              "value": "2",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "localhost:3000/api/cours",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "cours"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:3000/api/cours",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "dateCour",
+              "value": "2020-04-16 00:00:00",
+              "type": "text"
+            },
+            {
+              "key": "heureCour",
+              "value": "2020-04-16 00:00:00",
+              "type": "text"
+            },
+            {
+              "key": "eleveId",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "profId",
+              "value": "1",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "localhost:3000/api/cours",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "cours"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:3000/api/cours/2",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "localhost:3000/api/cours/2",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "cours",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "protocolProfileBehavior": {}
+}

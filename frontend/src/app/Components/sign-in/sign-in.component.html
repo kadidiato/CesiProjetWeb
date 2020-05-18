@@ -10,30 +10,38 @@
             </h3>
           </div>
 
-          <form [formGroup]="signinForm">
+          <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
             <div class="md-form">
-              <input type="text" id="elegantFormEmailEx" class="form-control"  mdbInput>
+              <input type="text" id="elegantFormEmailEx" class="form-control" name="email"
+                     id="email" formControlName="email" mdbInput>
               <label for="elegantFormEmailEx">Email</label>
             </div>
 
             <div class="md-form pb-3">
-              <input type="password" id="elegantFormPasswordEx"  class="form-control" mdbInput>
+              <input type="password" id="elegantFormPasswordEx" class="form-control" name="password"
+                     id="password" formControlName="password" mdbInput>
               <label for="elegantFormPasswordEx">Mot de passe </label>
-              <p class="font-small blue-text d-flex justify-content-end">Mot de passe
-                <a href="#" class="blue-text ml-1"> oublie?</a>
-              </p>
+            </div>
+            <br>
+            <div class="text-center mb-3">
+              <button mdbBtn gradient="blue" block="true" rounded="true"
+                      class="z-depth-1a waves-light" type="submit"
+                      [disabled]="signInForm.invalid"
+                      mdbWavesEffect>Connexion
+              </button>
             </div>
           </form>
+          <span class="text-danger">{{ errorMessage }}</span>
           <!--Body-->
 
-          <div class="text-center mb-3">
-            <button type="button" mdbBtn gradient="blue" block="true" rounded="true" class="z-depth-1a waves-light" mdbWavesEffect>Connexion</button>
-          </div>
-          <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> OU connexion avec </p>
+
+          <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> OU connexion
+            avec </p>
 
           <div class="row my-3 d-flex justify-content-center">
             <!--Google +-->
-            <button type="button" mdbBtn color="white" rounded="true" class="z-depth-1a waves-light" mdbWavesEffect (click)="loginGoogle()">
+            <button type="button" mdbBtn color="white" rounded="true" class="z-depth-1a waves-light" mdbWavesEffect
+                    (click)="loginGoogle()">
               <mdb-icon fab fab icon="google-plus" class="blue-text"></mdb-icon>
             </button>
           </div>
@@ -41,7 +49,7 @@
         <!--Footer-->
         <div class="modal-footer mx-5 pt-3 mb-1">
           <p class="font-small grey-text d-flex justify-content-end">jé n'ai pas de compte?
-            <a routerLink = "register-user" class="blue-text ml-1"> Créer un compte</a>
+            <a routerLink="register-user" class="blue-text ml-1"> Créer un compte</a>
           </p>
         </div>
       </mdb-card>

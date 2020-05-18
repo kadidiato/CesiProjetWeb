@@ -1,0 +1,43 @@
+<p-dialog header="Profile" [(visible)]="afficherDialog" [modal]="true" [responsive]="true"
+          [style]="{width: '400px', minWidth: '250px'}" [minY]="90"
+          [maximizable]="true" [baseZIndex]="10000" (onHide)="onHide()">
+  <form #form="ngForm">
+    <div class="form-group" *ngIf="cour">
+      <label for="profId">Professeur</label>
+      <select [(ngModel)]="cour.profId" id="profId" name="profId">
+        <option *ngFor="let prof of profs" [value]="profs">{{prof.id}}</option>
+      </select>
+      <!--<ngx-select  [(ngModel)]="cour.profId" [items]="profs" id="profId"
+      name="profId" noResultsFound="Aucun client trouvé"
+      placeholder="Selectionnez un client">
+      </ngx-select>-->
+    </div>
+    <div class="form-group" *ngIf="cour">
+      <label for="matiere">Matiere</label>
+      <input [(ngModel)]="cour.matiere" class="form-control" id="matiere" name="matiere"
+             placeholder="Entrez la matiere" required type="text">
+    </div>
+    <div class="form-group" *ngIf="cour">
+      <label for="description">Description de la Matiere</label>
+      <input [(ngModel)]="cour.description" class="form-control" id="description" name="description"
+             placeholder="Entrez la description de la matiere" required type="text">
+    </div>
+    <div class="form-group" *ngIf="cour">
+      <label for="dateCour">Date de cour</label>
+      <input [(ngModel)]="cour.dateCour" class="form-control" id="dateCour" name="dateCour"
+             placeholder="Entrez la date du cour" required type="date">
+    </div>
+    <div class="form-group" *ngIf="cour">
+      <label for="heureCour">Date de début du cour</label>
+      <input [(ngModel)]="cour.dateCour" class="form-control" id="heureCour" name="heureCour"
+             placeholder="Entrez la date du cour" required type="datetime-local">
+    </div>
+    <br>
+    <p-footer>
+      <button type="button" pButton (click)="ajouterCour(cour)" label="Ajouter"
+              class="ui-button-rounded" style="margin-right: 10px"></button>
+      <button type="button" pButton icon="fa fa-close" (click)="afficherDialog=false" label="Annuler"
+              class="ui-button-secondary ui-button-rounded" [disabled]="form.invalid"></button>
+    </p-footer>
+  </form>
+</p-dialog>

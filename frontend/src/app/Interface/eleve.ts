@@ -1,5 +1,5 @@
 export interface Eleves {
-  id?: string;
+  id?: number;
   nomEleve?: string;
   prenomEleve?: string;
   mailEleve?: string;

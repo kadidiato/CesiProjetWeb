@@ -10,44 +10,36 @@
             </h3>
           </div>
 
-          <form [formGroup]="signupForm">
-            <div class="md-form">
-              <input type="text" id="elegantFormNom" class="form-control"  mdbInput>
-              <label for="elegantFormNom">Nom</label>
-            </div>
+          <form class="omb_loginForm"  [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
 
             <div class="md-form">
-              <input type="text" id="elegantFormPrenom" class="form-control"  mdbInput>
-              <label for="elegantFormNom">Prenom</label>
-            </div>
-
-            <div class="md-form">
-              <input type="text" id="elegantFormEmail"  class="form-control" mdbInput>
-              <label for="elegantFormEmail">Email</label>
+              <input type="text" id="email" name="username"  class="form-control"
+                     formControlName="email" mdbInput>
+              <label for="email">Email</label>
             </div>
 
             <div class="md-form pb-3">
-              <input type="password" id="elegantFormPassword"  class="form-control" mdbInput>
-              <label for="elegantFormPassword">Mot de passe </label>
+              <input type="password" id="password" name="password"  class="form-control"
+                     formControlName="password" mdbInput>
+              <label for="password">Mot de passe </label>
+            </div>
+            <br>
+            <div class="text-center mb-3">
+              <button type="submit" mdbBtn gradient="blue" block="true" rounded="true"
+                      class="z-depth-1a waves-light" mdbWavesEffect [disabled]="signUpForm.invalid">Créer un compte</button>
             </div>
           </form>
+          <span class="text-danger">{{ errorMessage }}</span>
           <!--Body-->
 
-          <div class="text-center mb-3">
-            <button type="button" mdbBtn gradient="blue" block="true" rounded="true" class="z-depth-1a waves-light" mdbWavesEffect>Créer un compte</button>
-          </div>
+
           <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> OU Créér un compte avec </p>
 
-          <div class="row my-3 d-flex justify-content-center">
-            <!--Google +-->
-            <button type="button" mdbBtn color="white" rounded="true" class="z-depth-1a waves-light" mdbWavesEffect>
-              <mdb-icon fab fab icon="google-plus" class="blue-text"></mdb-icon>
-            </button>
-          </div>
+
         </mdb-card-body>
         <!--Footer-->
         <div class="modal-footer mx-5 pt-3 mb-1">
-          <p class="font-small grey-text d-flex justify-content-end">j'ai pas un compte?
+          <p class="font-small grey-text d-flex justify-content-end">j'ai déja un compte?
             <a  routerLink="sign-in" class="blue-text ml-1"> Connexion</a>
           </p>
         </div>

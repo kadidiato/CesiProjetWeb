@@ -1,15 +1,69 @@
-<p-table [value]="cours">
-  <ng-template pTemplate="header">
-    <tr>
-      <th>date</th>
-      <th>heure</th>
-    </tr>
-  </ng-template>
-  <ng-template let-cour pTemplate="body">
-    <tr>
-      <td>{{cour.dateCour | date}}</td>
-      <td>{{cour.heureCour | date}}</td>
-    </tr>
-  </ng-template>
-</p-table>
+<div class="container " id="b_pr">
+  <br>
+  <h1 class="text-center">
+    <i class="fa fa-file-text-o"></i>
+    Historiques de vos cours
+  </h1>
+  <p class="text-center text-muted">
+    ci-dessous un résumé des cours disponibles .
+  </p>
+  <div class="wrapper wrapper-content">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-heading">
+          <div class="row">
+            <div class="col-lg-12">
+              <div id="butt">
+                <button (click)="afficherDialogCour()" type="button" class="btn btn-outline-success">Ajouter un cour
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p-table [value]="cours" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true" [paginator]="true">
+          <ng-template pTemplate="header">
+            <tr class="text-center ">
+              <th>Cours #</th>
+              <th>Matiere</th>
+              <th>Description</th>
+              <th>Date cour</th>
+              <th>Heure cour</th>
+              <th>Créer le</th>
+              <th>Modifier le</th>
+              <th>Action</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-c>
+            <tr class="text-center ">
+              <td>{{c.id}}</td>
+              <td>{{c.matiere}}</td>
+              <td>{{c.description}}</td>
+              <td>{{c.dateCour | date: 'dd/MM/yyyy'}}</td>
+              <td>{{c.heureCour | date: 'dd/MM/yyyy'}}</td>
+              <td>{{c.createdAt | date: 'dd/MM/yyyy'}}</td>
+              <td>{{c.updatedAt | date: 'dd/MM/yyyy'}}</td>
+              <td>
+                <div class="btn-group" class="text-center ">
+                  <button [routerLink]="['/listCours/details', c.id]"
+                          class="btn btn-info"><i class="far fa-eye"></i>
+                  </button>
+                  <button
+                    class="btn btn-primary"><i class="fas fa-edit"></i>
+                  </button>
+                  <button
+                    class="btn btn-danger"><i class="far fa-trash-alt"></i>
+                  </button>
+                </div>
 
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-dialog-cour [afficherDialog]="afficherDialog" (onDialogHide)="onHideProfilDialog()" [cour]="cours">
+
+</app-dialog-cour>

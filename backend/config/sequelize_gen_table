@@ -1,0 +1,18 @@
+eleve
+sequelize-cli model:generate --name Client --attributes nom:string,prenom:string,telephone:string
+npx sequelize-cli model:generate --name Eleve --attributes nomEleve:string,prenomEleve:string,mailEleve:string,niveauEleve:string,rueEleve:string,villeEleve:string,zipEleve:string,paysEleve:string
+
+prof
+npx sequelize-cli model:generate --name Prof --attributes nomProf:string,prenomProf:string,mailProf:string,matiereProf:string,nbAvisPos:integer,nbAvisNeg:integer,niveauProf:string,rueProf:string,villeProf:string,zipProf:string,paysProf:string
+
+dispo
+npx sequelize-cli model:generate --name Disponibilite --attributes idProf:integer,dateDispo:date,heureDispoDebu:date,heureDispoFin:date
+
+cours
+npx sequelize-cli model:generate --name Cours --attributes idEleve:integer,idProf:integer,dateCour:date,heureCour:date
+
+Reservation
+npx sequelize-cli model:generate --name Reservation --attributes idReservation:integer,idEleve:integer,datereservation:date
+
+utilisateur
+npx sequelize-cli model:generate --name utilisateur --attributes nom:string,prenom:string,email:string,type:string

@@ -1,0 +1,28 @@
+étudiant:
+- inscription | mise à jours | cloture des comptes
+- Profils:
+	- renseigner cours de préférences
+	- 
+- consulter les cours disponible
+- modifier les filtres de recherche
+- consulter le profils du professeur
+- consulter le profil des ses contacts 
+- recherche des cours (filtres inclus)
+
+Professeur:
+- inscription | mise à jours | cloture des comptes
+- profils:
+	- 
+- proposer disponibilité
+- 
+
+Cours:
+- reservation par un étudiant
+- création | mise à jours | suppresion par un professeur
+- notifications de reservation [étudiant - élève] 
+- rappel 1h avant le cours
+- notification à la suppression
+
+contacts :
+- si un cours a été validé par un professeur et un étudiant
+- consulter les détails du profil
