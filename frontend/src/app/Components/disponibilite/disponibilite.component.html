@@ -1,1 +1,70 @@
-<p>disponibilite works!</p>
+<h2 style="color: #0c335f; font-family: Verdana, Geneva, Tahoma, sans-serif;">Votre agenda :</h2>
+<div class="container " id="b_pr">
+    <br>
+    <p class="text-center text-muted">
+      ci-dessous un résumé des cours disponibles .
+    </p>
+    <!--
+    <div class="wrapper wrapper-content">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-heading">
+            <div class="row">
+              <div class="col-lg-12">
+                <div id="butt">
+                  <button (click)="afficherDialogCour()" type="button" class="btn btn-outline-success">Ajouter un cour
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p-table [value]="cours" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true" [paginator]="true">
+            <ng-template pTemplate="header">
+              <tr class="text-center ">
+                <th>Cours #</th>
+                <th>Matiere</th>
+                <th>Description</th>
+                <th>Date cour</th>
+                <th>Heure cour</th>
+                <th>Créer le</th>
+                <th>Modifier le</th>
+                <th>Action</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-c>
+              <tr class="text-center ">
+                <td>{{c.id}}</td>
+                <td>{{c.matiere}}</td>
+                <td>{{c.description}}</td>
+                <td>{{c.dateCour | date: 'dd/MM/yyyy'}}</td>
+                <td>{{c.heureCour | date: 'dd/MM/yyyy'}}</td>
+                <td>{{c.createdAt | date: 'dd/MM/yyyy'}}</td>
+                <td>{{c.updatedAt | date: 'dd/MM/yyyy'}}</td>
+                <td>
+                  <div class="btn-group" class="text-center ">
+                    <button [routerLink]="['/listCours/details', c.id]"
+                            class="btn btn-info"><i class="far fa-eye"></i>
+                    </button>
+                    <button
+                      class="btn btn-primary"><i class="fas fa-edit"></i>
+                    </button>
+                    <button
+                      class="btn btn-danger"><i class="far fa-trash-alt"></i>
+                    </button>
+                  </div>
+  
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </div>
+    -->
+  </div>
+  <!--
+  <app-dialog-cour [afficherDialog]="afficherDialog" (onDialogHide)="onHideProfilDialog()" [cour]="cours">
+  
+  </app-dialog-cour>
+-->
+  

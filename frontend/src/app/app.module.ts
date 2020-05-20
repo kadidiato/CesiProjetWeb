@@ -32,6 +32,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxSelectModule} from "ngx-select-ex";
 import {ProfilComponent} from './Components/profil/profil.component';
 import { ContactsComponent } from './Components/contacts/contacts.component';
+import { NotificationComponent } from './Components/notification/notification.component';
+import { DetailDisponibiliteComponent } from './Components/disponibilite/detail-disponibilite/detail-disponibilite.component';
+import { DialogDisponibiliteComponent } from './Components/disponibilite/dialog-disponibilite/dialog-disponibilite.component';
 
 
 @NgModule({
@@ -47,7 +50,10 @@ import { ContactsComponent } from './Components/contacts/contacts.component';
     DetailCourComponent,
     DialogCourComponent,
     ProfilComponent,
-    ContactsComponent
+    ContactsComponent,
+    NotificationComponent,
+    DetailDisponibiliteComponent,
+    DialogDisponibiliteComponent
   ],
   imports: [
     BrowserModule,

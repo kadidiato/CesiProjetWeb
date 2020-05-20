@@ -15,7 +15,14 @@ export class ListCoursComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.init();
+    this.coursServiece.getCoursBe().subscribe(res => {
+      console.log('cours reçu ');
+      console.log(res);
+      this.cours = res;
+      console.log(this.cours);
+    }, err => {
+      console.log('error de recup');
+    });
   }
 
   async init() {
