@@ -31,6 +31,7 @@ import {DialogCourComponent} from './Components/list-cours/dialog-cour/dialog-co
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxSelectModule} from "ngx-select-ex";
 import {ProfilComponent} from './Components/profil/profil.component';
+import { ContactsComponent } from './Components/contacts/contacts.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {ProfilComponent} from './Components/profil/profil.component';
     DisponibiliteComponent,
     DetailCourComponent,
     DialogCourComponent,
-    ProfilComponent
+    ProfilComponent,
+    ContactsComponent
   ],
   imports: [
     BrowserModule,
