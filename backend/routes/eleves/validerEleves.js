@@ -1,6 +1,8 @@
 /**
+ * Créer Par Miss   COULIBALY
  * https://express-validator.github.io/docs
  */
+
 const {body, check, validationResult} = require('express-validator');
 
 /**
@@ -29,7 +31,6 @@ const getById = () => {
     return [
         check('id', 'invalid parameter id')
             .exists().withMessage('parameter id not found')
-            .isNumeric().withMessage('parameter id is not numeric')
             .trim().escape(),
     ];
 };

@@ -21,6 +21,9 @@ router.delete('/:id', validerReservationCours.getById(),
     validerReservationCours.validate,
     reservationCoursCtrl.destroy);
 
+router.delete('/:id_eleve/annuler/:id_cours',
+    reservationCoursCtrl.destroyByCoursId);
+
 
 //route pour mettre à jour un cours
 //url: PUT /api/reservationsCours

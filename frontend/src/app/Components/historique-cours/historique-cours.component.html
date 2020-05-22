@@ -14,13 +14,13 @@
           <div class="row">
             <div class="col-lg-12">
               <div id="butt">
-                <button (click)="afficherDialogCour()" type="button" class="btn btn-outline-success">Ajouter un cour
+                <button (click)="afficherDialogCour()" class="btn btn-outline-success" type="button">Ajouter un cour
                 </button>
               </div>
             </div>
           </div>
         </div>
-        <p-table [value]="cours" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true" [paginator]="true">
+        <p-table [paginator]="true" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true" [value]="cours">
           <ng-template pTemplate="header">
             <tr class="text-center ">
               <th>Cours #</th>
@@ -33,7 +33,7 @@
               <th>Action</th>
             </tr>
           </ng-template>
-          <ng-template pTemplate="body" let-c>
+          <ng-template let-c pTemplate="body">
             <tr class="text-center ">
               <td>{{c.id}}</td>
               <td>{{c.matiere}}</td>
@@ -64,6 +64,6 @@
   </div>
 </div>
 
-<app-dialog-cour [afficherDialog]="afficherDialog" (onDialogHide)="onHideProfilDialog()" [cour]="cours">
+<app-dialog-cour (onDialogHide)="onHideProfilDialog()" [afficherDialog]="afficherDialog">
 
 </app-dialog-cour>

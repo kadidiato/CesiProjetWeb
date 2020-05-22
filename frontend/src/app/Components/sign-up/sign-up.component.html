@@ -12,6 +12,16 @@
 
           <form class="omb_loginForm"  [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
 
+            <div class="md-form mb-2">
+              <select class="browser-default custom-select" formControlName="type" id="type"
+                      name="type">
+                <option [defaultSelected]="true" disabled value="">Selectionnez votre catégorie</option>
+                <option value="prof">Prof</option>
+                <option value="eleve">Elève</option>
+              </select>
+              <label for="type">Type</label>
+            </div>
+
             <div class="md-form">
               <input type="text" id="email" name="username"  class="form-control"
                      formControlName="email" mdbInput>
@@ -40,7 +50,7 @@
         <!--Footer-->
         <div class="modal-footer mx-5 pt-3 mb-1">
           <p class="font-small grey-text d-flex justify-content-end">j'ai déja un compte?
-            <a  routerLink="sign-in" class="blue-text ml-1"> Connexion</a>
+            <a [routerLink]="['/sign-in']" class="blue-text ml-1"> Connexion</a>
           </p>
         </div>
       </mdb-card>

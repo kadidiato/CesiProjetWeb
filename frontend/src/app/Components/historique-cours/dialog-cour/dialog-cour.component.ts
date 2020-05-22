@@ -2,7 +2,6 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Cours} from "../../../Interface/cours";
 import {CoursService} from "../../../Service/cours.service";
 import {ProfService} from "../../../Service/prof.service";
-import {Prof} from "../../../Interface/Prof";
 
 @Component({
   selector: 'app-dialog-cour',
@@ -28,12 +27,19 @@ export class DialogCourComponent implements OnInit {
    * evenement après la fermeture du dialog
    */
   @Output() onDialogHide = new EventEmitter(true);
-  typesProf: [1, 2];
 
-  constructor(private coursService: CoursService, private profService: ProfService) {
+  constructor(private coursService: CoursService, private profService: ProfService, private coursServiece: CoursService) {
   }
 
   ngOnInit(): void {
+    this.cour = {
+      dateCour: "",
+      description: "",
+      heureCour: "",
+      id: "",
+      matiere: "",
+      profId: "",
+    };
     this.getAllProfs();
   }
 
@@ -41,10 +47,21 @@ export class DialogCourComponent implements OnInit {
     this.onDialogHide.emit();
   }
 
-  ajouterCour(cour: Cours) {
-    this.coursService.addCours(cour).subscribe((response) => {
-      console.log(response);
-      console.log("ok");
+  async getAllcours() {
+    this.coursServiece.getCoursBe().subscribe(res => {
+      this.cours = res;
+      console.log(this.cours);
+    }, err => {
+      console.log('error de recup');
+    });
+  }
+
+  ajouterCour() {
+    console.log("-------");
+    console.log(this.cour);
+    this.coursService.addCours(this.cour).subscribe((response) => {
+      this.afficherDialog = false;
+      this.getAllcours();
     }, error => {
       console.log(error);
     });

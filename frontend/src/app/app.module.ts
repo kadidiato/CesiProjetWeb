@@ -1,9 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import {MDBBootstrapModule, NavbarModule} from 'angular-bootstrap-md';
 // Angular Forms Modules
-import {ReactiveFormsModule, FormsModule} from '@angular/forms'
-import {NavbarModule} from 'angular-bootstrap-md';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './Components/header/header.component';
@@ -11,9 +10,9 @@ import {SignInComponent} from './Components/sign-in/sign-in.component';
 import {FooterComponent} from './Components/footer/footer.component';
 import {ForgotPasswordComponent} from './Components/forgot-password/forgot-password.component';
 import {SignUpComponent} from './Components/sign-up/sign-up.component';
-import {ListCoursComponent} from './Components/list-cours/list-cours.component';
+import {HistoriqueCoursComponent} from './Components/historique-cours/historique-cours.component';
 import {DisponibiliteComponent} from './Components/disponibilite/disponibilite.component';
-import {ButtonModule, DialogModule, TableModule} from "primeng";
+import {ButtonModule, ConfirmationService, ConfirmDialogModule, DialogModule, TableModule, ToastModule} from "primeng";
 
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
@@ -26,11 +25,14 @@ import {AngularFireMessagingModule} from '@angular/fire/messaging';
 
 import {MessageService} from 'primeng/api';
 import {HttpClientModule} from "@angular/common/http";
-import {DetailCourComponent} from './Components/list-cours/detail-cour/detail-cour.component';
-import {DialogCourComponent} from './Components/list-cours/dialog-cour/dialog-cour.component';
+import {DetailCourComponent} from './Components/historique-cours/detail-cour/detail-cour.component';
+import {DialogCourComponent} from './Components/historique-cours/dialog-cour/dialog-cour.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxSelectModule} from "ngx-select-ex";
 import {ProfilComponent} from './Components/profil/profil.component';
+import {ProfilDialogComponent} from './Components/profil/profil-dialog/profil-dialog.component';
+import {CourEleveComponent} from './Components/cour-eleve/cour-eleve.component';
+import {ProfilProfDiaolgComponent} from './Components/profil/profil-prof-diaolg/profil-prof-diaolg.component';
 
 
 @NgModule({
@@ -41,11 +43,14 @@ import {ProfilComponent} from './Components/profil/profil.component';
     FooterComponent,
     ForgotPasswordComponent,
     SignUpComponent,
-    ListCoursComponent,
+    HistoriqueCoursComponent,
     DisponibiliteComponent,
     DetailCourComponent,
     DialogCourComponent,
-    ProfilComponent
+    ProfilComponent,
+    ProfilDialogComponent,
+    CourEleveComponent,
+    ProfilProfDiaolgComponent
   ],
   imports: [
     BrowserModule,
@@ -71,9 +76,11 @@ import {ProfilComponent} from './Components/profil/profil.component';
     DialogModule,
     ButtonModule,
     NgxSelectModule,
+    ConfirmDialogModule,
+    ToastModule
 
   ],
-  providers: [MessageService],
+  providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

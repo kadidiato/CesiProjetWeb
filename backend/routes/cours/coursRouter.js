@@ -11,6 +11,8 @@ router.get('/', validerCours.getAll(), validerCours.validate, coursCtrl.getAll);
 //url: GET /api/cours/:id
 router.get('/:id', validerCours.getById(), validerCours.validate, coursCtrl.getById);
 
+//router.get('/:profId', validerCours.getByProfId(), validerCours.validate, coursCtrl.getByProfId);
+
 //route pour créer un cours
 //url: POST /api/cours
 router.post('/', validerCours.save(), validerCours.validate, coursCtrl.save);

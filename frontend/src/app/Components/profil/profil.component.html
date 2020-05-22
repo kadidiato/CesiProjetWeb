@@ -1,120 +1,73 @@
-<div class="container">
+<div class="container" id="p-cont">
   <br>
   <h1 class="text-center">
     <i class="fa fa-dashboard"></i>
-    Tableau de bord
+    Tableau de bord - {{type}}
   </h1>
   <br>
   <div class="row">
-    <!-- <div class="col-md-8">
-       <div class="panel panel-primary">
-         <div class="panel-heading">
-           <h3 class="panel-title">
-             <i class="fa fa-book"></i>
-             Commande en cours
-           </h3>
-         </div>
-         <div class="panel-body">
-           <div>
-             <div class="table-responsive">
-               <p-table [value]="panier">
-                 <ng-template pTemplate="header">
-                   <tr>
-                     <th>Nom du plat</th>
-                     <th>Type de plat</th>
-                     <th>Prix du plat</th>
-                     <th>Action</th>
-                   </tr>
-                 </ng-template>
-                 <ng-template pTemplate="body" let-p>
-                   <tr>
-                     <td>{{p.id}}</td>
-                     <td>{{p.type}}</td>
-                     <td>{{p.prix}}</td>
-                     <td>
-                       <button type="button" (click)="deleteMenusSelected(p)"
-                               class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
-                       </button>
-                     </td>
-                   </tr>
-                 </ng-template>
-               </p-table>
-               <br>
-               <p-table [value]="movie">
-                 <ng-template pTemplate="header">
-                   <tr>
-                     <th>Titre du film</th>
-                     <th>Date du film</th>
-                     <th>Langue du film</th>
-                     <th>Action</th>
-                   </tr>
-                 </ng-template>
-                 <ng-template pTemplate="body" let-m>
-                   <tr>
-                     <td>{{m.original_title}}</td>
-                     <td>{{m.release_date}}</td>
-                     <td>{{m.original_language}}</td>
-                     <td>
-                       <button type="button" (click)="deleteMovieSelected(m)"
-                               class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
-                       </button>
-                     </td>
-                   </tr>
-                 </ng-template>
-               </p-table>
-               <br>
-             </div>
-           </div>
-         </div>
-         <ng-template #content>
-           <b style="text-align: center; color: #3b5998">Vous n'avez pas ajouter de contenue dans votre
-             panier</b>
-         </ng-template>
-       </div>
-       <div class="panel panel-primary">
-         <div class="panel-heading">
-           <h3 class="panel-title">
-             <i class="fa fa-file-text-o"> </i> Votre dernière commande
-           </h3>
-         </div>
-         <div class="panel-body">
-           <p-table [value]="commade">
-             <ng-template pTemplate="header">
-               <tr>
-                 <th>Commande #</th>
-                 <th>Nom films & Plats</th>
-                 <th>Date</th>
-                 <th>Prix</th>
-                 <th>Adresse de livraison</th>
-               </tr>
-             </ng-template>
-             <ng-template pTemplate="body" let-c>
-               <tr>
-                 <td>{{c.id}}</td>
-                 <td>{{c.idFilms}} {{c.idPlats}}</td>
-                 <td>{{c.date}}</td>
-                 <td>{{c.prix}}</td>
-                 <td>{{c.adresseLivraison}}</td>
-               </tr>
-             </ng-template>
-           </p-table>
-         </div>
-       </div>
-     </div>-->
-    <div class="col-md-4">
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            Informations sur votre compte
+    <div *ngIf="type === 'eleve'" class="col-8">
+      <div class="border-primary ">
+        <div class="card-header ">
+          <h3 class="card-title">
+            <i class="fa fa-book"></i>
+            Vos reservations
           </h3>
         </div>
-        <div class="panel-body" *ngIf="eleve">
+        <div class="card-body border">
+          <div>
+            <div class="table-responsive">
+              <p-table [paginator]="true" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
+                       [loading]="!reservedCours" [value]="reservedCours">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th>Matiere</th>
+                    <th>Description</th>
+                    <th>Heure cours</th>
+                    <th>Date cours</th>
+                    <th>Action</th>
+                    </tr>
+                  </ng-template>
+                <ng-template let-cours pTemplate="body">
+                    <tr>
+                      <td>{{cours.matiere}}</td>
+                      <td>{{cours.description}}</td>
+                      <td>{{cours.heureCour | date: 'dd/MM/yyyy'}}</td>
+                      <td>{{cours.dateCour | date: 'dd/MM/yyyy'}}</td>
+                      <td>
+                        <button (click)="confirmCancel(cours.id)" class="btn btn-danger btn-sm" type="button">
+                          <i class="fa fa-trash"></i>
+                          Annuler
+                        </button>
+                      </td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+              <br>
+            </div>
+          </div>
+        </div>
+        <ng-template #content>
+          <b style="text-align: center; color: #3b5998">Vous n'avez pas ajouter de contenue dans votre
+            panier</b>
+        </ng-template>
+      </div>
+    </div>
+    <div [class.col-12]="type === 'prof'" [class.col-4]="type === 'eleve'" *ngIf="type === 'prof' || 'eleve'">
+      <div class="border-primary ">
+        <div class="card-header">
+          <h3 class="card-title">
+            Vos informations
+          </h3>
+        </div>
+        <div class="card-body border" *ngIf="eleve || prof">
           <p>
             <img height="150" width="150" src="{{userPhoto?.photo}}" alt="profile">
           </p>
-          <h4>{{eleve?.nomEleve}} {{eleve?.prenomEleve}}</h4>
+          <h4>{{eleve?.nomEleve || prof?.nomProf}} {{eleve?.prenomEleve || prof?.prenomProf}}</h4>
           <p>
-            <button type="button" class="btn btn-success" (click)="afficherDialogProfil()">
+            <button (click)="afficherDialogProfil()" [class.btn-float]="type === 'prof'" class="btn btn-success"
+                    type="button">
               <i class="fa fa-user"></i>
               Modifier Vos informations
             </button>
@@ -122,22 +75,35 @@
           <p>
             <b>Nom :</b>
             <br>
-            {{eleve?.nomEleve}}
+            {{eleve?.nomEleve || prof?.nomProf}}
           </p>
           <p>
             <b>Prenom :</b>
             <br>
-            {{eleve?.prenomEleve}}
+            {{eleve?.prenomEleve || prof?.prenomProf}}
           </p>
           <p>
             <b>Email :</b>
             <br>
-            {{eleve?.mailEleve}}
+            {{eleve?.mailEleve || prof?.mailProf}}
           </p>
         </div>
       </div>
     </div>
 
   </div>
-
 </div>
+<app-profil-dialog *ngIf="eleve" [afficherDialog]="afficherDialog" [eleve]="eleve"
+                   (onDialogHide)="onHideProfilDialog()"></app-profil-dialog>
+<app-prof-diaolg *ngIf="prof" [afficherDialog]="afficherDialog" [prof]="prof" (onDialogHide)="onHideProfilDialog()">
+
+</app-prof-diaolg>
+<p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle">
+  <p-footer>
+    <button (click)="cd.reject()" icon="pi pi-times" label="Non, arrêtons" pButton type="button"></button>
+    <button (click)="cd.accept()" class="ui-button-danger" icon="pi pi-check" label="Oui, annulons"
+            pButton type="button">
+    </button>
+  </p-footer>
+</p-confirmDialog>
+<p-toast position="bottom-left"></p-toast>

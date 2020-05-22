@@ -1,0 +1,50 @@
+<p-dialog header="Profile du prof" [(visible)]="afficherDialog" [modal]="true" [responsive]="true"
+          [style]="{width: '400px', minWidth: '250px'}" [minY]="90"
+          [maximizable]="true" [baseZIndex]="10000" (onHide)="onHide()">
+  <form #form="ngForm">
+    <div class="form-group">
+      <!--
+      <label for="nomEleve">Professeur</label>
+      <select [(ngModel)]="eleve.nomEleve" id="nomEleve" name="profId">
+        <option *ngFor="let prof of profs" [value]="prof.id">{{prof.id}}</option>
+      </select>-->
+    </div>
+    <div class="form-group">
+      <label for="nomEleve">Nom</label>
+      <input [(ngModel)]="prof.nomProf" class="form-control" id="nomEleve" name="nomEleve"
+             placeholder="Entrez le nom" required type="text">
+    </div>
+    <div class="form-group">
+      <label for="prenomEleve">Prenom</label>
+      <input [(ngModel)]="prof.prenomProf" class="form-control" id="prenomEleve"
+             name="prenomEleve"
+             placeholder="Entrez le prenom" required type="text">
+    </div>
+    <div class="form-group">
+      <label for="mailEleve">Mail</label>
+      <input [(ngModel)]="prof.mailProf" class="form-control" id="mailEleve" name="mailEleve"
+             placeholder="Entrez le mail" required type="text">
+    </div>
+    <div class="form-group">
+      <label for="paysEleve">Pays </label>
+      <input [(ngModel)]="prof.paysProf" class="form-control" id="paysEleve" name="niveauEleve"
+             placeholder="Entrez le pays" required type="text">
+    </div>
+    <div class="form-group">
+      <label for="villeEleve">Ville </label>
+      <input [(ngModel)]="prof.villeProf" class="form-control" id="villeEleve" name="niveauEleve"
+             placeholder="Entrez la ville" required type="text">
+    </div>
+    <div class="form-group">
+      <label for="niveauEleve">Niveau </label>
+      <input [(ngModel)]=" prof.nbAvisPros" class="form-control" id="niveauEleve"
+             name="niveauEleve"
+             placeholder="Entrez le niveau " required type="text">
+    </div>
+    <br>
+    <p-footer>
+      <button type="button" pButton (click)="ajoutProf()" label="Ajouter"
+              class="ui-button-rounded" style="margin-right: 10px"></button>
+    </p-footer>
+  </form>
+</p-dialog>

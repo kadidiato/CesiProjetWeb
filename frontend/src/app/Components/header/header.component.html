@@ -1,8 +1,11 @@
 <!--Navbar-->
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light blue-grey lighten-5" [containerInside]="false">
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light blue-grey lighten-5"
+            [containerInside]="false">
 
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" href="#">logo</a></mdb-navbar-brand>
+  <mdb-navbar-brand><a class="navbar-brand" href="#">
+    <img alt="Courslogo" src="../../assets/CoursLogo.png" style="width:40px;">
+  </a></mdb-navbar-brand>
 
   <!-- Collapsible content -->
   <links>
@@ -10,24 +13,31 @@
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
-        <a class="nav-link waves-light" mdbWavesEffect routerLink="listCours">Cours<span class="sr-only"></span></a>
+        <a *ngIf="authService.type === 'prof'" class="nav-link waves-light" mdbWavesEffect
+           routerLink="historique-cours">
+          Parametrage Cours<span class="sr-only"></span>
+        </a>
       </li>
       <li class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect routerLink="disponibilite">Disponibilites</a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="cours">Cours</a>
+      </li>
+
       <!-- Dropdown -->
-    <!--  <li class="nav-item dropdown" dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          Basic dropdown<span class="caret"></span></a>
-        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
-          <div class="divider dropdown-divider"></div>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
-        </div>
-      </li>-->
+      <!--  <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            Basic dropdown<span class="caret"></span></a>
+          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
+          </div>
+        </li>-->
 
     </ul>
     <!-- Links -->
@@ -40,10 +50,10 @@
             <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
               <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span></a>
             <div class="dropdown-menu dropdown-menu-right dropdown-primary">
-              <a class="dropdown-item"  *ngIf="!isAuth">Connexion</a>
-              <a class="dropdown-item" [routerLink]="['/profil']" *ngIf="isAuth">Profil</a>
-              <a class="dropdown-item" (click)="onSignOut()" *ngIf="isAuth" >Deconnexion</a>
-              <a class="dropdown-item" [routerLink]="['/register-user']" *ngIf="!isAuth" >Créer un compte</a>
+              <a *ngIf="!authService.isAuth" [routerLink]="['/sign-in']" class="dropdown-item">Connexion</a>
+              <a *ngIf="authService.isAuth" [routerLink]="['/profil']" class="dropdown-item">Profil</a>
+              <a (click)="onSignOut()" *ngIf="authService.isAuth" class="dropdown-item">Deconnexion</a>
+              <a *ngIf="!authService.isAuth" [routerLink]="['/register-user']" class="dropdown-item">Créer un compte</a>
             </div>
           </div>
         </a>

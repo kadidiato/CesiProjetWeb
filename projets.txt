@@ -1,24 +1,26 @@
 étudiant:
-- inscription | mise à jours | cloture des comptes
+- inscription | mise à jours | cloture des comptes **kadi back and front**
+- connexion **kadi back and front**
+-Mot de passe Oublie **kadi back and front**
 - Profils:
 	- renseigner cours de préférences
 	- 
-- consulter les cours disponible
+- consulter les cours disponible   **kadi back and front**    
 - modifier les filtres de recherche
 - consulter le profils du professeur
 - consulter le profil des ses contacts 
 - recherche des cours (filtres inclus)
 
 Professeur:
-- inscription | mise à jours | cloture des comptes
+- inscription | mise à jours | cloture des comptes **kadi back and front**
 - profils:
 	- 
-- proposer disponibilité
+- proposer disponibilité           **kadi back and front**
 - 
 
 Cours:
-- reservation par un étudiant
-- création | mise à jours | suppresion par un professeur
+- reservation par un étudiant      **kadi back and front**
+- création | mise à jours | suppresion par un professeur **kadi back and front**
 - notifications de reservation [étudiant - élève] 
 - rappel 1h avant le cours
 - notification à la suppression

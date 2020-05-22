@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Disponibilite } from 'src/app/Interface/disponibilite';
+import { DisponibiliteService } from 'src/app/Service/disponibilite.service';
 
 @Component({
   selector: 'app-disponibilite',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisponibiliteComponent implements OnInit {
 
-  constructor() { }
+  disponibilites: Disponibilite;
 
+  constructor(private disponibiliteServiece: DisponibiliteService) {
+  }
+/**
+   * appel de la fonction init();
+   * 
+   */
   ngOnInit(): void {
+    this.init();
+  }
+  
+  async init() {
+    this.disponibiliteServiece.getCoursBe().subscribe(res => {
+      this.disponibilites = res;
+      console.log(this.disponibilites);
+    }, err => {
+      console.log('error de recup');
+    });
+  }
+
+  reserver() {
+
   }
 
 }

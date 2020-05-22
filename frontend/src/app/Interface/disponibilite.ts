@@ -4,4 +4,6 @@ export interface Disponibilite {
   dateDispo?: string;
   heureDispoDebu?: string;
   heureDispoFin?: string;
+  description?: string;
+
 }
