@@ -3,6 +3,8 @@ import {HttpClient, HttpParams, HttpResponse} from '@angular/common/http';
 import {Observable, throwError} from "rxjs";
 import {Cours} from "../Interface/cours";
 import {catchError} from "rxjs/operators";
+import {Eleves} from "../Interface/eleve";
+import {Prof} from "../Interface/Prof";
 
 
 @Injectable({
@@ -42,6 +44,10 @@ export class CoursService {
       .pipe(catchError<any, any>(this.handleError));
   }
 
+  updateCour(cour): Observable<Cours> {
+    return this.http.put<Cours>(`${this.api_redirect}/cours`, cour);
+  }
+
   /**
    * recuperation un cour en connaissant l'id du professeur
    * @param__id
@@ -56,6 +62,15 @@ export class CoursService {
         }
       );
     }));
+  }
+
+  getCourById(id) {
+    return this.http.get<Cours>(`${this.api_redirect}/cours/${id}`);
+  }
+
+
+  deleteCour(id) {
+    return this.http.delete(`${this.api_redirect}/cours/${id}`);
   }
 
   handleError(error) {

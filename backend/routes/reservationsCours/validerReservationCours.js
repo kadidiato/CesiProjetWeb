@@ -26,7 +26,7 @@ function getAll() {
  * @returns {[*]}
  */
 const getById = () => {
-    console.log('get by id validator');
+    //console.log('get by id validator');
     return [
         check('id', 'invalid parameter id')
             .exists().withMessage('parameter id not found')

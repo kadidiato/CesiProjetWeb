@@ -22,5 +22,4 @@ export class HeaderComponent implements OnInit {
     this.authService.disconnect();
     this.route.navigate(['/sign-in']);
   }
-
 }

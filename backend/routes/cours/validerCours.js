@@ -58,7 +58,7 @@ const validate = (req, res, next) => {
         return next()
     }
     const extractedErrors = [];
-    errors.array().map(err => extractedErrors.push({ [err.param]: err.msg }))
+    errors.array().map(err => extractedErrors.push({[err.param]: err.msg}));
 
     return res.status(422).json({
         errors: extractedErrors,
@@ -86,11 +86,9 @@ function save() {
             .exists().withMessage('parametre matiere introuvable').trim().escape(),
         body('description', 'description saisi est invalide')
             .exists().withMessage('parametre description introuvable').trim().escape(),
-        body('prix_cours_heure', ' parametre prix invalide')
-            .not().isEmpty().withMessage('parametre profId ne doit pas etre vide')
+        body('prix_cours_heure', ' parametre prix invalide').optional()
             .trim().escape(),
-        body('status', ' parametre stutus invalide')
-            .not().isEmpty().withMessage('parametre profId ne doit pas etre vide')
+        body('status', ' parametre stutus invalide').optional()
             .trim().escape(),
     ]
 }

@@ -66,7 +66,7 @@ export class AuthService {
   }
 
   getProfInfofromDB(uid) {
-    this.profService.getProfByid(uid).subscribe(res => {
+    this.profService.getProfByUid(uid).subscribe(res => {
       this.user = res;
     }, r => {
       console.log('errr' + r);

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AuthService} from "../../Service/auth.service";
@@ -7,6 +7,7 @@ import {auth} from "firebase";
 import {ElevesService} from "../../Service/eleves.service";
 import {Eleves} from "../../Interface/eleve";
 import {ProfService} from "../../Service/prof.service";
+import {DOCUMENT} from "@angular/common";
 
 
 @Component({
@@ -22,7 +23,8 @@ export class SignInComponent implements OnInit {
 
   constructor(private afAuth: AngularFireAuth, private authService: AuthService,
               private profService: ProfService, private elevesService: ElevesService,
-              private formBuilder: FormBuilder, private route: Router) {
+              private formBuilder: FormBuilder, private route: Router,
+              @Inject(DOCUMENT) private document: Document) {
     afAuth.user.subscribe(u => console.log('L\'utilisateur est ', u));
   }
 
@@ -39,7 +41,7 @@ export class SignInComponent implements OnInit {
     if (this.type) {
       this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(
         u => {
-          this.route.navigate(['/']);
+          this.route.navigate(['/profil']);
           this.sendToServeur(this.type);
           /*this.message.add({
             severity: 'success',
@@ -93,9 +95,7 @@ export class SignInComponent implements OnInit {
     );
   }
 
-  /**
-   * envoie les information du client au serveur il s'atend a recevoir (email qui est obligatoir)
-   */
+
   sendToServeur(type) {
     this.afAuth.user.subscribe(eleve => {
       localStorage.setItem('type', this.type);
@@ -112,8 +112,8 @@ export class SignInComponent implements OnInit {
           this.type = '';
           this.authService.user = data;
         });
-
         this.route.navigate(['/profil']);
+        this.document.location.reload();
       } else if (type === 'prof') {
         this.profService.getOrSave({
           // variable que le serveur s'attend a recevoir
@@ -126,13 +126,17 @@ export class SignInComponent implements OnInit {
           this.type = '';
           this.authService.user = data;
         });
-
         this.authService.checkAndSetAuthState();
         this.route.navigate(['/profil']);
+        this.document.location.reload();
       } else {
         this.authService.disconnect();
       }
     });
+  }
+
+  refrech(): void {
+    window.location.reload();
   }
 
 }

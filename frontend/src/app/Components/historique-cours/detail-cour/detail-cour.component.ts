@@ -9,7 +9,7 @@ import {Cours} from "../../../Interface/cours";
   styleUrls: ['./detail-cour.component.scss']
 })
 export class DetailCourComponent implements OnInit {
-  cours: Cours
+  cours: Cours;
 
   constructor(private route: ActivatedRoute, private  coursService: CoursService) {
   }
@@ -21,8 +21,9 @@ export class DetailCourComponent implements OnInit {
   }
 
   getCoursByIdProf(id: string) {
-    this.coursService.getCoursByProfeseurID(id).then(res => {
+    this.coursService.getCourById(id).subscribe(res => {
       this.cours = res;
+      console.log(this.cours);
     });
   }
 

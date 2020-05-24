@@ -23,13 +23,13 @@ function getAll(req, res, next) {
 }
 
 /**
- * Controller pour recuperer un professeur  par son id
+ * Controller pour recuperer un professeur  par son uid
  * @param req
  * @param res
  * @param next
  */
-function getById(req, res, next) {
-    let uid = req.params.id;
+function getByUid(req, res, next) {
+    let uid = req.params.uid;
     models.Prof.findOne({
         where: {uid: uid}
     }).then((ProfesseurFound) => {
@@ -42,6 +42,23 @@ function getById(req, res, next) {
         return res.status(201).json(ProfesseurFound);
     }).catch((err) => {
         return res.json(err);
+    });
+}
+
+function getById(req, res, next) {
+    let id = req.params.id;
+    console.log(id);
+    models.Prof.findByPk(id).then((ProfesseurFound) => {
+        if (!ProfesseurFound) {
+            return res.status(404).json({
+                status: 'error',
+                message: `Prof non trouvé`
+            });
+        } else {
+            return res.status(200).json(ProfesseurFound);
+        }
+    }).catch((err) => {
+        return res.status(500).json(err);
     });
 }
 
@@ -215,5 +232,5 @@ function update(req, res, next) {
 }
 
 module.exports = {
-    getAll, getById, save, destroy, update, getOrCreate
+    getAll, getByUid, save, destroy, update, getOrCreate, getById
 };

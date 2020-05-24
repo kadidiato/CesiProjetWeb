@@ -1,4 +1,4 @@
-export interface Disponibilite {
+export class Disponibilite {
   id?: string;
   profId?: string;
   dateDispo?: string;

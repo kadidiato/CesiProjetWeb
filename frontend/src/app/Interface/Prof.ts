@@ -4,7 +4,7 @@ export interface Prof {
   prenomProf?: string;
   mailProf?: string;
   matiereProf?: string;
-  nbAvisPros?: string;
+  nbAvisPos?: any;
   nbAvisNeg?: string;
   niveauEleve?: string;
   rueProf?: string;

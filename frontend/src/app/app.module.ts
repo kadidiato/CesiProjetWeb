@@ -12,7 +12,15 @@ import {ForgotPasswordComponent} from './Components/forgot-password/forgot-passw
 import {SignUpComponent} from './Components/sign-up/sign-up.component';
 import {HistoriqueCoursComponent} from './Components/historique-cours/historique-cours.component';
 import {DisponibiliteComponent} from './Components/disponibilite/disponibilite.component';
-import {ButtonModule, ConfirmationService, ConfirmDialogModule, DialogModule, TableModule, ToastModule} from "primeng";
+import {
+  ButtonModule,
+  ConfirmationService,
+  ConfirmDialogModule,
+  DialogModule,
+  TableModule,
+  ToastModule,
+  TooltipModule,
+} from "primeng";
 
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
@@ -33,6 +41,8 @@ import {ProfilComponent} from './Components/profil/profil.component';
 import {ProfilDialogComponent} from './Components/profil/profil-dialog/profil-dialog.component';
 import {CourEleveComponent} from './Components/cour-eleve/cour-eleve.component';
 import {ProfilProfDiaolgComponent} from './Components/profil/profil-prof-diaolg/profil-prof-diaolg.component';
+import {AddDispoDialogComponent} from './Components/disponibilite/add-dispo-dialog/add-dispo-dialog.component';
+import {ProfDetailComponent} from './Components/cour-eleve/prof-detail/prof-detail.component';
 
 
 @NgModule({
@@ -50,7 +60,9 @@ import {ProfilProfDiaolgComponent} from './Components/profil/profil-prof-diaolg/
     ProfilComponent,
     ProfilDialogComponent,
     CourEleveComponent,
-    ProfilProfDiaolgComponent
+    ProfilProfDiaolgComponent,
+    AddDispoDialogComponent,
+    ProfDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +89,8 @@ import {ProfilProfDiaolgComponent} from './Components/profil/profil-prof-diaolg/
     ButtonModule,
     NgxSelectModule,
     ConfirmDialogModule,
-    ToastModule
+    ToastModule,
+    TooltipModule,
 
   ],
   providers: [MessageService, ConfirmationService],

@@ -10,40 +10,57 @@
       </select>-->
     </div>
     <div class="form-group">
-      <label for="nomEleve">Nom</label>
-      <input [(ngModel)]="prof.nomProf" class="form-control" id="nomEleve" name="nomEleve"
+      <label for="nomProf">Nom</label>
+      <input [(ngModel)]="prof.nomProf" class="form-control" id="nomProf" name="nomProf"
              placeholder="Entrez le nom" required type="text">
     </div>
     <div class="form-group">
-      <label for="prenomEleve">Prenom</label>
-      <input [(ngModel)]="prof.prenomProf" class="form-control" id="prenomEleve"
+      <label for="prenomProf">Prenom</label>
+      <input [(ngModel)]="prof.prenomProf" class="form-control" id="prenomProf"
              name="prenomEleve"
              placeholder="Entrez le prenom" required type="text">
     </div>
     <div class="form-group">
-      <label for="mailEleve">Mail</label>
-      <input [(ngModel)]="prof.mailProf" class="form-control" id="mailEleve" name="mailEleve"
-             placeholder="Entrez le mail" required type="text">
+      <label for="mailProf">Mail</label>
+      <input [(ngModel)]="prof.mailProf" class="form-control" id="mailProf" name="mailProf"
+             placeholder="Entrez le mail" required type="email">
     </div>
     <div class="form-group">
-      <label for="paysEleve">Pays </label>
-      <input [(ngModel)]="prof.paysProf" class="form-control" id="paysEleve" name="niveauEleve"
+      <label for="paysProf">Pays </label>
+      <input [(ngModel)]="prof.paysProf" class="form-control" id="paysProf" name="paysProf"
              placeholder="Entrez le pays" required type="text">
     </div>
     <div class="form-group">
-      <label for="villeEleve">Ville </label>
-      <input [(ngModel)]="prof.villeProf" class="form-control" id="villeEleve" name="niveauEleve"
+      <label for="villeProf">Ville </label>
+      <input [(ngModel)]="prof.villeProf" class="form-control" id="villeProf" name="villeProf"
              placeholder="Entrez la ville" required type="text">
     </div>
     <div class="form-group">
-      <label for="niveauEleve">Niveau </label>
-      <input [(ngModel)]=" prof.nbAvisPros" class="form-control" id="niveauEleve"
-             name="niveauEleve"
-             placeholder="Entrez le niveau " required type="text">
+      <label for="rueProf">Rue </label>
+      <input [(ngModel)]="prof.rueProf" class="form-control" id="rueProf" name="rueProf"
+             placeholder="Entrez la rue" required type="text">
+    </div>
+    <div class="form-group">
+      <label for="nbAvisPos">Nombre avis positive </label>
+      <input [(ngModel)]=" prof.nbAvisPos" class="form-control" id="nbAvisPos"
+             name="nbAvisPos"
+             placeholder="Nombre avis positive " required type="number">
+    </div>
+    <div class="form-group">
+      <label for="nbAvisNeg">Nombre avis negative </label>
+      <input [(ngModel)]=" prof.nbAvisNeg" class="form-control" id="nbAvisNeg"
+             name="nbAvisNeg"
+             placeholder="Nombre avis negative  " required type="number">
+    </div>
+    <div class="form-group">
+      <label for="matiereProf">Specialité </label>
+      <input [(ngModel)]=" prof.matiereProf" class="form-control" id="matiereProf"
+             name="matiereProf"
+             placeholder="Specialité" required type="text">
     </div>
     <br>
     <p-footer>
-      <button type="button" pButton (click)="ajoutProf()" label="Ajouter"
+      <button type="button" pButton (click)="ajoutProf()" label="Valider" [disabled]="form.invalid"
               class="ui-button-rounded" style="margin-right: 10px"></button>
     </p-footer>
   </form>

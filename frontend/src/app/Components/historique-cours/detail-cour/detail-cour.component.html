@@ -1,1 +1,55 @@
-<p>detail-cour works!</p>
+<div class="animated fadeIn">
+  <div class="card">
+    <div *ngIf="cours" class="card-header" id="title">
+      <div class="pull-left">
+        <h2>Details du cour </h2>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div *ngIf="cours " class="row justify-content-md-center">
+  <div class="col-lg-8 col-sm-offset-8">
+    <div class="card">
+      <div class="card-header text-center">
+        <strong>Les informations du cour</strong>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <tbody>
+          <tr>
+            <td><strong>Matiere :</strong></td>
+            <td>{{cours.matiere}}</td>
+          </tr>
+          <tr>
+            <td><strong>Description :</strong></td>
+            <td>{{cours.description}}</td>
+          </tr>
+          <tr>
+            <td><strong>Prix :</strong></td>
+            <td>{{cours.prix_cours_heure}} €</td>
+          </tr>
+          <tr>
+            <td><strong>Heure :</strong></td>
+            <td>{{cours.heureCour | date:'HH:mm'}}</td>
+          </tr>
+          <tr>
+            <td><strong>Date du cour :</strong></td>
+            <td>{{cours.dateCour | date: 'dd/MM/yyyy'}}</td>
+          </tr>
+          <tr>
+            <td><strong>Cour créer le :</strong></td>
+            <td>{{cours.createdAt | date: 'dd/MM/yyyy'}}</td>
+          </tr>
+          <tr>
+            <td><strong>Modifier le : </strong></td>
+            <td>{{cours.updatedAt  | date: 'dd/MM/yyyy'}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

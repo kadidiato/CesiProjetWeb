@@ -26,31 +26,34 @@
                     <th>Heure cours</th>
                     <th>Date cours</th>
                     <th>Action</th>
-                    </tr>
-                  </ng-template>
+                  </tr>
+                </ng-template>
                 <ng-template let-cours pTemplate="body">
-                    <tr>
-                      <td>{{cours.matiere}}</td>
-                      <td>{{cours.description}}</td>
-                      <td>{{cours.heureCour | date: 'dd/MM/yyyy'}}</td>
-                      <td>{{cours.dateCour | date: 'dd/MM/yyyy'}}</td>
-                      <td>
-                        <button (click)="confirmCancel(cours.id)" class="btn btn-danger btn-sm" type="button">
-                          <i class="fa fa-trash"></i>
-                          Annuler
-                        </button>
-                      </td>
-                    </tr>
-                  </ng-template>
-                </p-table>
+                  <tr>
+                    <td>{{cours.matiere}}</td>
+                    <td>{{cours.description}}</td>
+                    <td>{{cours.heureCour | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{cours.dateCour | date: 'dd/MM/yyyy'}}</td>
+                    <td>
+                      <button (click)="confirmCancel(cours.id)" class="btn btn-danger btn-sm" type="button">
+                        <i class="fa fa-trash"></i>
+                        Annuler
+                      </button>
+                    </td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                  <tr>
+                    <td [attr.colspan]="5" class="text-center">
+                      Vous n'avez pas encore reserver de cour
+                    </td>
+                  </tr>
+                </ng-template>
+              </p-table>
               <br>
             </div>
           </div>
         </div>
-        <ng-template #content>
-          <b style="text-align: center; color: #3b5998">Vous n'avez pas ajouter de contenue dans votre
-            panier</b>
-        </ng-template>
       </div>
     </div>
     <div [class.col-12]="type === 'prof'" [class.col-4]="type === 'eleve'" *ngIf="type === 'prof' || 'eleve'">
@@ -72,21 +75,32 @@
               Modifier Vos informations
             </button>
           </p>
-          <p>
-            <b>Nom :</b>
-            <br>
-            {{eleve?.nomEleve || prof?.nomProf}}
-          </p>
-          <p>
-            <b>Prenom :</b>
-            <br>
-            {{eleve?.prenomEleve || prof?.prenomProf}}
-          </p>
-          <p>
-            <b>Email :</b>
-            <br>
-            {{eleve?.mailEleve || prof?.mailProf}}
-          </p>
+          <div [class.col-4]="type === 'prof'">
+            <p>
+              <b>Nom :</b>
+              <br>
+              {{eleve?.nomEleve || prof?.nomProf}}
+            </p>
+            <p>
+              <b>Prenom :</b>
+              <br>
+              {{eleve?.prenomEleve || prof?.prenomProf}}
+            </p>
+            <p>
+              <b>Email :</b>
+              <br>
+              {{eleve?.mailEleve || prof?.mailProf}}
+            </p>
+            <div *ngIf="prof">
+              <p>
+                <b>Spécialité :</b>
+                <br>
+                {{prof?.matiereProf}}
+              </p>
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>

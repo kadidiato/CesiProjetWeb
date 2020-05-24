@@ -9,7 +9,9 @@ router.get('/', validerProfs.getAll(), validerProfs.validate, profsCtrl.getAll);
 
 //route qui gère la recuperation d'un cours
 //url: GET /api/prof/:id
-router.get('/:id', validerProfs.getById(), validerProfs.validate, profsCtrl.getById);
+router.get('/:uid', validerProfs.getByUid(), validerProfs.validate, profsCtrl.getByUid);
+
+router.get('/:id/id', validerProfs.getById(), validerProfs.validate, profsCtrl.getById);
 
 //route pour créer un cours
 //url: POST /api/prof

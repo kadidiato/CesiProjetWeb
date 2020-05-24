@@ -34,6 +34,15 @@ const getById = () => {
     ];
 };
 
+const getByUid = () => {
+    //console.log('get by id validator');
+    return [
+        check('uid', 'invalid parameter uid')
+            .exists().withMessage('parameter uid not found')
+            .trim().escape(),
+    ];
+};
+
 /**
  * Regarde si un paramètre n'est pas fourni comme attendu et renvoie une
  * erreur et un message au client
@@ -78,5 +87,6 @@ function save() {
 }
 
 module.exports = {
-    validate, getAll, getById, save
+    validate, getAll, getById, save, getByUid
+    ,
 };

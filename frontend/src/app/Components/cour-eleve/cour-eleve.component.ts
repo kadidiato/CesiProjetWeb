@@ -18,7 +18,7 @@ export class CourEleveComponent implements OnInit {
   reservation: Reservation;
 
   constructor(private coursServiece: CoursService, private route: Router,
-              private reservationService: ReservationService, private authService: AuthService,
+              private reservationService: ReservationService, public authService: AuthService,
               private messageService: MessageService) {
   }
 
@@ -46,6 +46,10 @@ export class CourEleveComponent implements OnInit {
       this.reservationService.reserver(this.reservation).subscribe((res) => {
         console.log("res de reserver");
         console.log(res);
+        this.messageService.add({
+          severity: 'success', summary: 'Nouvelle réservation',
+          detail: 'Votre réservation a été prise en compte'
+        });
       }, error => {
         console.log("error de reserver");
         console.log(error);
@@ -54,7 +58,7 @@ export class CourEleveComponent implements OnInit {
           msg = 'Vous avez deja reservé ce cours'
         }
         this.messageService.add({
-          severity: 'error', summary: 'Information réservation',
+          severity: 'error', summary: 'Nouvelle réservation',
           detail: msg
         });
       });

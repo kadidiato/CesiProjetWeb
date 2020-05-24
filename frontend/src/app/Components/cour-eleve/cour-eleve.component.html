@@ -16,30 +16,40 @@
           <ng-template pTemplate="header">
             <tr class="text-center ">
               <th>Cours #</th>
+              <th>Professeur</th>
               <th>Matiere</th>
+              <th>Prix cour</th>
               <th>Description</th>
               <th>Date cour</th>
               <th>Heure cour</th>
               <th>Créer le</th>
-              <th>Modifier le</th>
               <th>Action</th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-c>
             <tr class="text-center ">
               <td>{{c.id}}</td>
+              <td><a [routerLink]="['/cours/info-prof/', c.ProfId]">{{c.Prof.nomProf}} {{ c.Prof.prenomProf}}</a></td>
               <td>{{c.matiere}}</td>
+              <td>{{c.prix_cours_heure}}</td>
               <td>{{c.description}}</td>
               <td>{{c.dateCour | date: 'dd/MM/yyyy'}}</td>
               <td>{{c.heureCour | date: 'dd/MM/yyyy'}}</td>
-              <td>{{c.createdAt | date: 'dd/MM/yyyy'}}</td>
               <td>{{c.updatedAt | date: 'dd/MM/yyyy'}}</td>
               <td>
                 <div class="btn-group text-center">
-                  <button (click)="reserver(c.id)" class="btn btn-outline-success" type="button">Reserver
+                  <button (click)="reserver(c.id)" [disabled]="authService.type === 'prof'"
+                          class="btn btn-outline-success" type="button">Reserver
                   </button>
                 </div>
 
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td [attr.colspan]="8" class="text-center">
+                Aucun cours trouvé
               </td>
             </tr>
           </ng-template>
@@ -48,4 +58,3 @@
     </div>
   </div>
 </div>
-<p-toast position="bottom-left"></p-toast>

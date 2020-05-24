@@ -2,23 +2,32 @@
     <br>
     <h1 class="text-center">
       <i class="fa fa-file-text-o"></i>
-      la liste des disponibilites  de professeur
+      Liste des disponibilites de professeur
     </h1>
     <p class="text-center text-muted">
-      ci-dessous un résumé des cours disponibles .
+      ci-dessous un résumé des cours disponibles.
     </p>
     <div class="wrapper wrapper-content">
       <div class="row">
         <div class="col-lg-12">
           <div class="panel panel-heading">
+            <div class="row">
+              <div class="col-lg-12">
+                <div *ngIf="authService.type === 'prof'" id="butt">
+                  <button (click)="showAddDispoDialog()" class="btn btn-outline-success">Ajouter une dispo
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-          <p-table [value]="disponibilites" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true" [paginator]="true">
+          <p-table [paginator]="true" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
+                   [value]="disponibilites">
             <ng-template pTemplate="header">
               <tr class="text-center ">
                 <th>Disponibilite #</th>
                 <th>Description</th>
                 <th>Professeur</th>
-                <th>Date </th>
+                <th>Date</th>
                 <th>Heure de debut</th>
                 <th>Heure de Fin</th>
                 <th>Créer le</th>
@@ -32,17 +41,34 @@
                 <td>{{c.description}}</td>
                 <td>{{c.profId}}</td>
                 <td>{{c.dateDispo | date: 'dd/MM/yyyy'}}</td>
-                <td>{{c.heureDispoDebu | date: 'dd/MM/yyyy'}}</td>  
+                <td>{{c.heureDispoDebu | date: 'dd/MM/yyyy'}}</td>
                 <td>{{c.heureDispoFin | date: 'dd/MM/yyyy'}}</td>
                 <td>{{c.createdAt | date: 'dd/MM/yyyy'}}</td>
                 <td>{{c.updatedAt | date: 'dd/MM/yyyy'}}</td>
                 <td>
-                  <div class="btn-group" class="text-center ">
-  
-                    <button (click)="reserver()" type="button" class="btn btn-outline-success">Reserver
+                  <div *ngIf="authService.type === 'eleve'" class="btn-group text-center">
+                    <button (click)="reserver(c.id)" class="btn btn-outline-success"
+                            type="button">Reserver
                     </button>
                   </div>
-  
+                  <div *ngIf="authService.type === 'prof'" class="btn-group text-center">
+                    <button (click)="showUpdateDispoDialog(c)" class="btn btn-outline-dark"
+                            pTooltip="Modifier la disponibilité" tooltipPosition="top">
+                      <i aria-hidden="true" class="fa fa-edit"></i>
+                    </button>
+                    <button (click)="confirmDelete(c.id)" class="btn btn-outline-danger"
+                            pTooltip="Supprimer la disponibilité" tooltipPosition="top">
+                      <i aria-hidden="true" class="fa fa-trash"></i>
+                    </button>
+                  </div>
+
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td [attr.colspan]="9" class="text-center">
+                  Aucune disponibilité trouvée
                 </td>
               </tr>
             </ng-template>
@@ -51,3 +77,15 @@
       </div>
     </div>
   </div>
+<app-add-dispo-dialog (onDialogHide)="onAddDispoDialogHide()" [dispo]="dispanip" [modif]="modif"
+                      [showDialog]="afficherDialog">
+</app-add-dispo-dialog>
+<p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle">
+  <p-footer>
+    <button (click)="cd.reject()" icon="pi pi-times" label="Non, arrêtons" pButton type="button"></button>
+    <button (click)="cd.accept()" class="ui-button-danger" icon="pi pi-check" label="Oui, continuons"
+            pButton type="button">
+    </button>
+  </p-footer>
+</p-confirmDialog>
+<p-toast position="bottom-left"></p-toast>

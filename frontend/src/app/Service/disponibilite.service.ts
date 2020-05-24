@@ -1,24 +1,36 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { Disponibilite } from '../Interface/disponibilite';
-import { catchError } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {Disponibilite} from '../Interface/disponibilite';
+import {catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DisponibiliteService {
-  api_redirect = '/back/api';
+  api_url = '/back/api';
 
   constructor(private http: HttpClient) {
   }
 
 /**
    * recuperation tous les  coursen connaissant son id tslint:disable-next-line:no-redundant-jsdoc
-   * 
+ *
    */
   getCoursBe(): Observable<any> {
-    return this.http.get(`${this.api_redirect}/disponibilites`);
+  return this.http.get(`${this.api_url}/disponibilites`);
+}
+
+  addDispo(dispo) {
+    return this.http.post(`${this.api_url}/disponibilites`, dispo);
+  }
+
+  updateDispo(dispo) {
+    return this.http.put(`${this.api_url}/disponibilites`, dispo);
+  }
+
+  deleteDispo(id) {
+    return this.http.delete(`${this.api_url}/disponibilites/${id}`);
   }
 
   /**
@@ -27,7 +39,7 @@ export class DisponibiliteService {
    */
   async getCoursById(id: string): Promise<any> {
     return new Promise<any>(((resolve, reject) => {
-      this.http.get(`${this.api_redirect}/disponibilites?id=${id}`, {responseType: 'text'}).toPromise().then(
+      this.http.get(`${this.api_url}/disponibilites?id=${id}`, {responseType: 'text'}).toPromise().then(
         res => {
           console.log('l id disponibilite' + id);
           resolve(JSON.parse(res));
@@ -40,7 +52,7 @@ export class DisponibiliteService {
 
 
   addCours(disponibilite: Disponibilite): Observable<Disponibilite> {
-    return this.http.post<Disponibilite>(`${this.api_redirect}/disponibilites`, disponibilite)
+    return this.http.post<Disponibilite>(`${this.api_url}/disponibilites`, disponibilite)
       .pipe(catchError<any, any>(this.handleError));
   }
 
@@ -50,7 +62,7 @@ export class DisponibiliteService {
    */
   async getCoursByProfeseurID(id: string): Promise<Disponibilite> {
     return new Promise<Disponibilite>(((resolve, reject) => {
-      this.http.get(`${this.api_redirect}/profs?id=${id}`, {responseType: 'text'}).toPromise().then(
+      this.http.get(`${this.api_url}/profs?id=${id}`, {responseType: 'text'}).toPromise().then(
         res => {
           resolve(JSON.parse(res));
         }, rej => {

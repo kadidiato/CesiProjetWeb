@@ -26,9 +26,14 @@ export class ProfService {
     }).toPromise();
   }
 
-  getProfByid(id: string) {
+  getProfByUid(id: string) {
     return this.http.get<Prof>(`${this.url}/profs/${id}`);
   }
+
+  getProfByid(id: string) {
+    return this.http.get<Prof>(`${this.url}/profs/${id}/id`);
+  }
+
 
   updateProf(prof): Observable<Prof> {
     return this.http.put<Prof>(`${this.url}/profs`, prof);
