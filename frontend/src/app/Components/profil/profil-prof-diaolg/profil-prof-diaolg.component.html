@@ -1,0 +1,67 @@
+<p-dialog header="Profile du prof" [(visible)]="afficherDialog" [modal]="true" [responsive]="true"
+          [style]="{width: '400px', minWidth: '250px'}" [minY]="90"
+          [maximizable]="true" [baseZIndex]="10000" (onHide)="onHide()">
+  <form #form="ngForm">
+    <div class="form-group">
+      <!--
+      <label for="nomEleve">Professeur</label>
+      <select [(ngModel)]="eleve.nomEleve" id="nomEleve" name="profId">
+        <option *ngFor="let prof of profs" [value]="prof.id">{{prof.id}}</option>
+      </select>-->
+    </div>
+    <div class="form-group">
+      <label for="nomProf">Nom</label>
+      <input [(ngModel)]="prof.nomProf" class="form-control" id="nomProf" name="nomProf"
+             placeholder="Entrez le nom" required type="text">
+    </div>
+    <div class="form-group">
+      <label for="prenomProf">Prenom</label>
+      <input [(ngModel)]="prof.prenomProf" class="form-control" id="prenomProf"
+             name="prenomEleve"
+             placeholder="Entrez le prenom" required type="text">
+    </div>
+    <div class="form-group">
+      <label for="mailProf">Mail</label>
+      <input [(ngModel)]="prof.mailProf" class="form-control" id="mailProf" name="mailProf"
+             placeholder="Entrez le mail" required type="email">
+    </div>
+    <div class="form-group">
+      <label for="paysProf">Pays </label>
+      <input [(ngModel)]="prof.paysProf" class="form-control" id="paysProf" name="paysProf"
+             placeholder="Entrez le pays" required type="text">
+    </div>
+    <div class="form-group">
+      <label for="villeProf">Ville </label>
+      <input [(ngModel)]="prof.villeProf" class="form-control" id="villeProf" name="villeProf"
+             placeholder="Entrez la ville" required type="text">
+    </div>
+    <div class="form-group">
+      <label for="rueProf">Rue </label>
+      <input [(ngModel)]="prof.rueProf" class="form-control" id="rueProf" name="rueProf"
+             placeholder="Entrez la rue" required type="text">
+    </div>
+    <div class="form-group">
+      <label for="nbAvisPos">Nombre avis positive </label>
+      <input [(ngModel)]=" prof.nbAvisPos" class="form-control" id="nbAvisPos"
+             name="nbAvisPos"
+             placeholder="Nombre avis positive " required type="number">
+    </div>
+    <div class="form-group">
+      <label for="nbAvisNeg">Nombre avis negative </label>
+      <input [(ngModel)]=" prof.nbAvisNeg" class="form-control" id="nbAvisNeg"
+             name="nbAvisNeg"
+             placeholder="Nombre avis negative  " required type="number">
+    </div>
+    <div class="form-group">
+      <label for="matiereProf">Specialité </label>
+      <input [(ngModel)]=" prof.matiereProf" class="form-control" id="matiereProf"
+             name="matiereProf"
+             placeholder="Specialité" required type="text">
+    </div>
+    <br>
+    <p-footer>
+      <button type="button" pButton (click)="ajoutProf()" label="Valider" [disabled]="form.invalid"
+              class="ui-button-rounded" style="margin-right: 10px"></button>
+    </p-footer>
+  </form>
+</p-dialog>

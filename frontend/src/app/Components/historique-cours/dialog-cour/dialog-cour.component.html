@@ -1,0 +1,47 @@
+<p-dialog (onHide)="onHide()" [(visible)]="afficherDialog" [baseZIndex]="10000" [maximizable]="true"
+          [minY]="10" [modal]="true" header="{{titreDialog}}"
+          [responsive]="true" [style]="{width: '400px', minWidth: '250px'}" (onShow)="onShow()">
+  <form #form="ngForm">
+    <div class="form-group">
+      <label for="matiere">Matiere</label>
+      <input [(ngModel)]="cour.matiere" class="form-control" id="matiere" name="matiere"
+             placeholder="Entrez la matiere" required type="text">
+    </div>
+    <div class="form-group">
+      <label for="description">Description de la Matiere</label>
+      <input [(ngModel)]="cour.description" class="form-control" id="description" name="description"
+             placeholder="Entrez la description de la matiere" required type="text">
+    </div>
+    <div class="form-group">
+      <label for="dateCour">Date de cour</label>
+      <input [(ngModel)]="cour.dateCour" class="form-control" id="dateCour" name="dateCour"
+             placeholder="Entrez la date du cour" required type="date">
+    </div>
+    <div class="form-group">
+      <label for="heureCour">Date de début du cour</label>
+      <input [(ngModel)]="cour.heureCour" class="form-control" id="heureCour" name="heureCour"
+             placeholder="Entrez la date du cour" required type="datetime-local">
+    </div>
+    <div class="form-group">
+      <label for="prix">Prix</label>
+      <input [(ngModel)]="cour.prix_cours_heure" class="form-control" id="prix" min="1"
+             name="prix" placeholder="Entrez le prix du cours" required type="number">
+    </div>
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select [(ngModel)]="status" class="browser-default custom-select" id="status" name="status" required>
+        <option [defaultSelected]="true" disabled value="">Selectionnez le statut du cours</option>
+        <option value="dispo">Disponible</option>
+        <option value="indispo">Indisponible</option>
+      </select>
+    </div>
+    <br>
+    <p-footer>
+      <button (click)="valider()" [disabled]="form.invalid || cour.status == -1" class="ui-button-rounded"
+              label="Valider"
+              pButton
+              style="margin-right: 10px" type="submit">
+      </button>
+    </p-footer>
+  </form>
+</p-dialog>

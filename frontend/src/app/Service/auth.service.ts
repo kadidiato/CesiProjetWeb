@@ -1,6 +1,8 @@
-import {Injectable, NgZone} from '@angular/core';
-import {HttpClient, HttpParams, HttpResponse} from "@angular/common/http";
-import {User} from "../Interface/user";
+import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {AngularFireAuth} from "@angular/fire/auth";
+import {ElevesService} from "./eleves.service";
+import {ProfService} from "./prof.service";
 
 function AlxToObjectString(data?: object): {[key: string]: string} {
   const res = {};
@@ -15,45 +17,59 @@ function AlxToObjectString(data?: object): {[key: string]: string} {
 })
 export class AuthService {
   api_redirect = '/back/api';
+  public isAuth: boolean;
+  public user;
+  public type: string;
 
-  constructor(private http: HttpClient) { }
-  public user: User;
-
-  private async get<T>(url: string, data: object): Promise<HttpResponse<T>> {
-    return this.http.get<T>( url, {
-      observe: 'response',
-      params: {...AlxToObjectString(data)}
-    }).toPromise();
-  }
-  /**
-   * envoie des données de connexion au serveur
-   * @param userId
-   */
-  authentificate(params: {[key: string]: string}): Promise<HttpResponse<string>> {
-    const P = new HttpParams( {fromObject: params} );
-    return this.http.post( `${this.api_redirect}/utilisateur`, P, {
-      observe: 'response',
-      responseType: 'text',
-      headers: {'content-type': 'application/x-www-form-urlencoded'}
-    }).toPromise();
+  constructor(private http: HttpClient, private afAuth: AngularFireAuth,
+              private elevesService: ElevesService, private  profService: ProfService) {
+    this.checkAndSetAuthState();
   }
 
+  get getFirebaseToken() {
+    return localStorage.getItem('token');
+  }
 
-  /**
-   * recuperation des données un utilisateur dans la base par son id
-   * @param id
-   */
-  async getUser(id : string): Promise<User> {
-    return new Promise<User>(((resolve, reject) => {
-      this.http.get(`${this.api_redirect}/utilisateur?id=${id}`, {responseType: 'text'}).toPromise().then(
-        res => {
-          console.log("utilisateur " + res);
-          resolve(JSON.parse(res));
-        }, rej => {
-          reject(rej);
+  disconnect() {
+    this.afAuth.auth.signOut();
+    localStorage.removeItem('type');
+    this.isAuth = false;
+  }
+
+  checkAndSetAuthState() {
+    this.afAuth.auth.onAuthStateChanged(
+      (user) => {
+        if (user) {
+          this.isAuth = true;
+          this.type = localStorage.getItem('type');
+          if (this.type === 'prof') {
+            this.getProfInfofromDB(user.uid);
+          } else if (this.type === 'eleve') {
+            this.getEleveInfofromDB(user.uid);
+          }
+        } else {
+          this.isAuth = false;
         }
-      );
-    }));
+      }
+    );
   }
 
+  getEleveInfofromDB(uid) {
+    this.elevesService.getEleveByid(uid).subscribe(res => {
+      // console.log("getEleveInfofromDB");
+      // console.log(res);
+      this.user = res;
+    }, r => {
+      console.error('errr');
+      console.error(r);
+    });
+  }
+
+  getProfInfofromDB(uid) {
+    this.profService.getProfByUid(uid).subscribe(res => {
+      this.user = res;
+    }, r => {
+      console.log('errr' + r);
+    });
+  }
 }

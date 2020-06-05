@@ -1,0 +1,35 @@
+<p-dialog (onHide)="onHide()" [(visible)]="showDialog" [baseZIndex]="10000"
+          (onShow)="onShow()" [minY]="0" [modal]="true"
+          [responsive]="true" [style]="{width: '400px', minWidth: '250px'}" header="Disponibilité">
+  <form #form="ngForm">
+    <div class="form-group">
+      <label for="dateDispo">Date</label>
+      <input [(ngModel)]="dispo.dateDispo" class="form-control" id="dateDispo" name="dateDispo"
+             placeholder="Entrez la date de la disponibilité" required type="date">
+    </div>
+    <div class="form-group">
+      <label for="heureDispoDebu">Heure début</label>
+      <input [(ngModel)]="dispo.heureDispoDebu" class="form-control" id="heureDispoDebu" name="heureDispoDebu"
+             placeholder="Entrez l'heure de début de la disponibilité" required type="text">
+    </div>
+    <div class="form-group">
+      <label for="heureDispoFin">Heure fin</label>
+      <input [(ngModel)]="dispo.heureDispoFin" class="form-control" id="heureDispoFin" name="heureDispoFin"
+             placeholder="Entrez l'heure de fin de la disponibilité" required type="datetime-local">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input [(ngModel)]="dispo.description" class="form-control" id="description" name="description"
+             placeholder="Entrez la description de la disponibilité" required type="text">
+    </div>
+    <br>
+    <p-footer>
+      <button (click)="validateForm()" [disabled]="form.invalid" class="ui-button-rounded" label="Ajouter" pButton
+              style="margin-right: 10px" type="button">
+      </button>
+      <button (click)="showDialog = false" class="ui-button-secondary ui-button-rounded"
+              label="Annuler" pButton type="button">
+      </button>
+    </p-footer>
+  </form>
+</p-dialog>

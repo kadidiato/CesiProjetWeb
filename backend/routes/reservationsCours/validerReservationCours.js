@@ -1,4 +1,5 @@
 /**
+ * Créer Par Miss   COULIBALY
  * https://express-validator.github.io/docs
  */
 const {body, check, validationResult} = require('express-validator');
@@ -25,9 +26,23 @@ function getAll() {
  * @returns {[*]}
  */
 const getById = () => {
-    console.log('get by id validator');
+    //console.log('get by id validator');
     return [
         check('id', 'invalid parameter id')
+            .exists().withMessage('parameter id not found')
+            .isNumeric().withMessage('parameter id is not numeric')
+            .trim().escape(),
+    ];
+};
+
+/**
+ * Verifie l'id passé dans la requete du client
+ * @returns {[*]}
+ */
+const getReservationByEleveId = () => {
+    //console.log('get by id validator');
+    return [
+        check('eleveId', ' parametre id invalid')
             .exists().withMessage('parameter id not found')
             .isNumeric().withMessage('parameter id is not numeric')
             .trim().escape(),
@@ -76,5 +91,5 @@ function save() {
 }
 
 module.exports = {
-    validate, getAll, getById, save
+    validate, getAll, getById, save, getReservationByEleveId, 
 };

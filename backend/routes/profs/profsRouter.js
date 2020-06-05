@@ -9,11 +9,14 @@ router.get('/', validerProfs.getAll(), validerProfs.validate, profsCtrl.getAll);
 
 //route qui gère la recuperation d'un cours
 //url: GET /api/prof/:id
-router.get('/:id', validerProfs.getById(), validerProfs.validate, profsCtrl.getById);
+router.get('/:uid', validerProfs.getByUid(), validerProfs.validate, profsCtrl.getByUid);
+
+router.get('/:id/id', validerProfs.getById(), validerProfs.validate, profsCtrl.getById);
 
 //route pour créer un cours
 //url: POST /api/prof
-router.post('/', validerProfs.save(), validerProfs.validate, profsCtrl.save)
+router.post('/', validerProfs.save(), validerProfs.validate, profsCtrl.save);
+router.post('/enregistrerOuConnecter', validerProfs.save(), validerProfs.validate, profsCtrl.getOrCreate);
 
 //route pour supprimer un cours
 //url: DELETE /api/prof/:id
@@ -24,6 +27,6 @@ router.delete('/:id', validerProfs.getById(),
 
 //route pour mettre à jour un cours
 //url: PUT /api/prof
-router.put('/', validerProfs.save, validerProfs.validate, profsCtrl.update)
+router.put('/', validerProfs.save(), validerProfs.validate, profsCtrl.update);
 
 module.exports = router;

@@ -12,3 +12,12 @@
   -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
   box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
 }
+.password{
+  color: #000;
+  float: right;
+}
+button{
+  //color: #000;
+  background-color: blue($color: #000000);
+  
+}

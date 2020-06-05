@@ -13,13 +13,17 @@ router.get('/:id', validerReservationCours.getById(), validerReservationCours.va
 
 //route pour créer un cours
 //url: POST /api/reservationsCours
-router.post('/', validerReservationCours.save(), validerReservationCours.validate, reservationCoursCtrl.save);
+router.post('/', validerReservationCours.save(),
+    validerReservationCours.validate, reservationCoursCtrl.save);
 
 //route pour supprimer un cours
 //url: DELETE /api/reservationsCours/:id
 router.delete('/:id', validerReservationCours.getById(),
     validerReservationCours.validate,
     reservationCoursCtrl.destroy);
+
+router.delete('/:id_eleve/annuler/:id_cours',
+    reservationCoursCtrl.destroyByCoursId);
 
 
 //route pour mettre à jour un cours

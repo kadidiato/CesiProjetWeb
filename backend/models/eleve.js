@@ -2,6 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Eleve = sequelize.define('Eleve', {
     nomEleve: DataTypes.STRING,
+    uid: DataTypes.STRING,
     prenomEleve: DataTypes.STRING,
     mailEleve: DataTypes.STRING,
     niveauEleve: DataTypes.STRING,

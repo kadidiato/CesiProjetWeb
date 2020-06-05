@@ -1,4 +1,5 @@
 /**
+ * Créer Par Miss   COULIBALY
  * https://express-validator.github.io/docs
  */
 const { body, check, validationResult } = require('express-validator');
@@ -44,7 +45,7 @@ const getById = () => {
  */
 const validate = (req, res, next) => {
     const errors = validationResult(req);
-    console.log('in validate')
+    //console.log('in validate')
     if (errors.isEmpty()) {
         return next()
     }

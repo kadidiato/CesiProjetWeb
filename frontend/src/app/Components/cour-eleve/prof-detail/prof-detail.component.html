@@ -1,0 +1,72 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div *ngIf="prof" class="card-header" id="title">
+      <div class="pull-left">
+        <h2>Details du Prof </h2>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div *ngIf="prof " class="row justify-content-md-center">
+  <div class="col-lg-8 col-sm-offset-8">
+    <div class="card">
+      <div class="card-header text-center">
+        <strong>Les informations du professeur</strong>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <tbody>
+          <tr>
+            <td><strong>Identifiant du prof :</strong></td>
+            <td>{{prof.id}}</td>
+          </tr>
+          <tr>
+            <td><strong>Nom :</strong></td>
+            <td>{{prof.nomProf}}</td>
+          </tr>
+          <tr>
+            <td><strong>Prenom :</strong></td>
+            <td>{{prof.prenomProf}}</td>
+          </tr>
+          <tr>
+            <td><strong>Ville :</strong></td>
+            <td>{{prof.villeProf}}</td>
+          </tr>
+          <tr>
+            <td><strong>Mail :</strong></td>
+            <td>{{prof.mailProf}}</td>
+          </tr>
+          <tr>
+            <td><strong>Nombre avis positive :</strong></td>
+            <td>{{prof.nbAvisPos}}</td>
+          </tr>
+          <tr>
+            <td><strong>Nombre avis negative :</strong></td>
+            <td>{{prof.nbAvisNeg}}</td>
+          </tr>
+          <tr>
+            <td><strong>Adresse complète: </strong></td>
+            <td>{{prof.paysProf}} - {{prof.villeProf}} - {{prof.rueProf}}</td>
+          </tr>
+          <tr>
+            <td><strong>Specialité :</strong></td>
+            <td>{{prof.matiereProf}}</td>
+          </tr>
+          <!--<tr>
+            <td><strong>Client créer le :</strong></td>
+            <td>{{prof.createdAt | date: 'dd/MM/yyyy'}}</td>
+          </tr>
+          <tr>
+            <td><strong>Ouvrier modifier le :</strong></td>
+            <td>{{client.updatedAt | date: 'dd/MM/yyyy'}}</td>
+          </tr>-->
+          </tbody>
+        </table>
+        <hr>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -8,7 +8,7 @@ var models = require('../../models');
  */
 function getAll(req, res, next) {
     models.Disponibilite.findAll().then((disponibilite) => {
-        //si je trouve pas de cours je retourne un status 404 avec un petit message
+        //si je trouve pas de disponibilite je retourne un status 404 avec un petit message
         if (!disponibilite)
             return res.status(404).json({
                 message: 'aucun cours trouvé'
@@ -67,6 +67,30 @@ function save(req, res, next) {
         return res.status(500).json(err);
     })
 }
+/**
+ * Controller pour recuperer une Disponibilite d'un professeur  avec  id
+ * @param req
+ * @param res
+ * @param next
+ */
+function getByProfId(req, res, next) {
+    let prof = req.params.profId;
+    models.Cours.findAll({
+        where: { profId: prof }
+    }).then((disponibilite) => {
+        //si je trouve pas de cours je retourne un status 404 avec un petit message
+        if (!disponibilite)
+            return res.status(404).json({
+                message: 'aucun Disponibilite trouvé'
+            });
+        //si tout s'est bien passé je retourne le status 200 et le cours trouvé
+        return res.status(200).json(disponibilite);
+    }).catch((err) => {
+        //Erreur serveur => envoie erreur 500 et message au client
+        return res.status(500).json(err);
+    });
+
+}
 
 /**
  * Controller pour supprimer une Disponibilite par son id
@@ -100,6 +124,7 @@ function update(req, res, next) {
         dateDispo: req.body.dateDispo,
         heureDispoDebu: req.body.heureDispoDebu,
         heureDispoFin: req.body.heureDispoFin,
+        description: req.body.description,
 
     };
 
@@ -113,5 +138,5 @@ function update(req, res, next) {
 }
 
 module.exports = {
-    getAll, getById, save, destroy, update,
+    getAll, getById, save, destroy, update,getByProfId
 };
