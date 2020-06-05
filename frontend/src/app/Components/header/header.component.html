@@ -14,16 +14,16 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
         <a *ngIf="authService.type === 'prof'" class="nav-link waves-light" mdbWavesEffect
-           routerLink="historique-cours">
+           routerLink="historique-cours"  style="color: #0c335f; font-family: Verdana, Geneva, Tahoma, sans-serif;" > <i class="fa fa-cog" aria-hidden="true"></i>
           Parametrage Cours<span class="sr-only"></span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect routerLink="disponibilite">Disponibilites</a>
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="disponibilite"  style="color: #0c335f; font-family: Verdana, Geneva, Tahoma, sans-serif;" > <i class="fa fa-calendar" aria-hidden="true"></i> Disponibilites</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect routerLink="cours">Cours</a>
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="cours"  style="color: #0c335f; font-family: Verdana, Geneva, Tahoma, sans-serif;" > <i class="fa fa-book" ></i> Cours</a>
       </li>
 
       <!-- Dropdown -->
@@ -47,13 +47,13 @@
         <a class="nav-link">
           <div class="btn-group" mdbDropdown>
 
-            <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect  style="color: #0c335f; font-family: Verdana, Geneva, Tahoma, sans-serif;" >
               <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span></a>
-            <div class="dropdown-menu dropdown-menu-right dropdown-primary">
-              <a *ngIf="!authService.isAuth" [routerLink]="['/sign-in']" class="dropdown-item">Connexion</a>
-              <a *ngIf="authService.isAuth" [routerLink]="['/profil']" class="dropdown-item">Profil</a>
-              <a (click)="onSignOut()" *ngIf="authService.isAuth" class="dropdown-item">Deconnexion</a>
-              <a *ngIf="!authService.isAuth" [routerLink]="['/register-user']" class="dropdown-item">Créer un compte</a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-primary"  style="color: #0c335f; font-family: Verdana, Geneva, Tahoma, sans-serif;" >
+              <a *ngIf="!authService.isAuth" [routerLink]="['/sign-in']" class="dropdown-item"  style="color: #0c335f; font-family: Verdana, Geneva, Tahoma, sans-serif;" ><i class="fas fa-sign-in-alt"></i> Connexion</a>
+              <a *ngIf="authService.isAuth" [routerLink]="['/profil']" class="dropdown-item"   style="color: #0c335f; font-family: Verdana, Geneva, Tahoma, sans-serif;" ><i class="fas fa-address-card" aria-hidden="true"></i> Profil</a>
+              <a (click)="onSignOut()" *ngIf="authService.isAuth" class="dropdown-item"   style="color: #0c335f; font-family: Verdana, Geneva, Tahoma, sans-serif;" ><i class="fas fa-sign-out-alt" aria-hidden="true"></i> Deconnexion</a>
+              <a *ngIf="!authService.isAuth" [routerLink]="['/register-user']" class="dropdown-item"   style="color: #0c335f; font-family: Verdana, Geneva, Tahoma, sans-serif;" ><i class="fas fa-user-plus"></i> Créer un compte</a>
             </div>
           </div>
         </a>
