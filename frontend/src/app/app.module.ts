@@ -43,6 +43,7 @@ import {CourEleveComponent} from './Components/cour-eleve/cour-eleve.component';
 import {ProfilProfDiaolgComponent} from './Components/profil/profil-prof-diaolg/profil-prof-diaolg.component';
 import {AddDispoDialogComponent} from './Components/disponibilite/add-dispo-dialog/add-dispo-dialog.component';
 import {ProfDetailComponent} from './Components/cour-eleve/prof-detail/prof-detail.component';
+import { ErrorsComponent } from './Components/errors/errors.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import {ProfDetailComponent} from './Components/cour-eleve/prof-detail/prof-deta
     CourEleveComponent,
     ProfilProfDiaolgComponent,
     AddDispoDialogComponent,
-    ProfDetailComponent
+    ProfDetailComponent,
+    ErrorsComponent
   ],
   imports: [
     BrowserModule,

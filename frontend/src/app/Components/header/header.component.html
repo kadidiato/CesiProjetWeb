@@ -14,16 +14,16 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
         <a *ngIf="authService.type === 'prof'" class="nav-link waves-light" mdbWavesEffect
-           routerLink="historique-cours">
+           routerLink="historique-cours"> <i class="fa fa-cog" aria-hidden="true"></i> 
           Parametrage Cours<span class="sr-only"></span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect routerLink="disponibilite">Disponibilites</a>
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="disponibilite"> <i class="fa fa-calendar" aria-hidden="true"></i> Disponibilites</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect routerLink="cours">Cours</a>
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="cours"> <i class="fa fa-book" ></i> Cours</a>
       </li>
 
       <!-- Dropdown -->
@@ -51,8 +51,8 @@
               <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span></a>
             <div class="dropdown-menu dropdown-menu-right dropdown-primary">
               <a *ngIf="!authService.isAuth" [routerLink]="['/sign-in']" class="dropdown-item">Connexion</a>
-              <a *ngIf="authService.isAuth" [routerLink]="['/profil']" class="dropdown-item">Profil</a>
-              <a (click)="onSignOut()" *ngIf="authService.isAuth" class="dropdown-item">Deconnexion</a>
+              <a *ngIf="authService.isAuth" [routerLink]="['/profil']" class="dropdown-item"><i class="fa fa-user" aria-hidden="true"></i> Profil</a>
+              <a (click)="onSignOut()" *ngIf="authService.isAuth" class="dropdown-item"><i class="fa fa-sign-out" aria-hidden="true"></i> Deconnexion</a>
               <a *ngIf="!authService.isAuth" [routerLink]="['/register-user']" class="dropdown-item">Créer un compte</a>
             </div>
           </div>
