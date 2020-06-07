@@ -99,12 +99,12 @@ export class SignInComponent implements OnInit {
   sendToServeur(type) {
     this.afAuth.user.subscribe(eleve => {
       localStorage.setItem('type', this.type);
-      const i = eleve.displayName.indexOf(' '); // couper en 2 displayname pour avoir le prenom et le nom
+    //  const i = eleve.displayName.indexOf(' '); // couper en 2 displayname pour avoir le prenom et le nom
       if (type === 'eleve') {
         this.elevesService.getOrSave({
           // variable que le serveur s'attend a recevoir
-          nomEleve: eleve.displayName.substr(0, i),
-          prenomEleve: eleve.displayName.substr(i),
+         // nomEleve: eleve.displayName.substr(0, i),
+         // prenomEleve: eleve.displayName.substr(i),
           mailEleve: eleve.email,
           photo: eleve.photoURL,
           uid: eleve.uid,
@@ -117,8 +117,8 @@ export class SignInComponent implements OnInit {
       } else if (type === 'prof') {
         this.profService.getOrSave({
           // variable que le serveur s'attend a recevoir
-          nomProf: eleve.displayName.substr(0, i),
-          prenomProf: eleve.displayName.substr(i),
+          //nomProf: eleve.displayName.substr(0, i),
+          //prenomProf: eleve.displayName.substr(i),
           mailProf: eleve.email,
           photo: eleve.photoURL,
           uid: eleve.uid,

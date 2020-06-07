@@ -72,19 +72,19 @@ function getById(req, res, next) {
 function getOrCreate(req, res, next) {
 
     let prof = {
-        nomProf: req.body.nomProf,
-        prenomProf: req.body.prenomProf,
+        nomProf: req.body.nomProf || "",
+        prenomProf: req.body.prenomProf || "",
         mailProf: req.body.mailProf,
-        matiereProf: req.body.matiereProf,
+        matiereProf: req.body.matiereProf || "",
         // a enlever cette parti pour faire la table nottation
-        nbAvisPos: req.body.nbAvisPos,
-        nbAvisNeg: req.body.nbAvisNeg,
+        nbAvisPos: req.body.nbAvisPos || "",
+        nbAvisNeg: req.body.nbAvisNeg || "",
         //
-        niveauEProf: req.body.niveauEProf,
-        rueProf: req.body.rueProf,
-        villeProf: req.body.villeProf,
-        zipProf: req.body.zipProf,
-        paysProf: req.body.paysProf,
+        niveauEProf: req.body.niveauEProf || "",
+        rueProf: req.body.rueProf || "",
+        villeProf: req.body.villeProf || "",
+        zipProf: req.body.zipProf || "",
+        paysProf: req.body.paysProf || "",
         uid: req.body.uid,
     };
 

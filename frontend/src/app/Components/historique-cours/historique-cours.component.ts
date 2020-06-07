@@ -3,6 +3,8 @@ import {CoursService} from "../../Service/cours.service";
 import {Cours} from "../../Interface/cours";
 import {AuthService} from "../../Service/auth.service";
 import {ConfirmationService, MessageService} from "primeng";
+import { Prof } from 'src/app/Interface/Prof';
+import { ProfService } from 'src/app/Service/prof.service';
 
 @Component({
   selector: 'app-list-cours',
@@ -14,13 +16,15 @@ export class HistoriqueCoursComponent implements OnInit {
   cours: Cours[];
   afficherDialog = false;
   courSelectionne: Cours;
+  prof: Prof;
 
   constructor(private coursServiece: CoursService, private confirmService: ConfirmationService,
-              private msgService: MessageService) {
+              private msgService: MessageService, private  profService: ProfService ) {
   }
 
   ngOnInit(): void {
-    this.init();
+   this.init();
+   //this.getCoursesPof();
   }
 
   async init() {
@@ -31,6 +35,7 @@ export class HistoriqueCoursComponent implements OnInit {
       console.log('error de recup');
     });
   }
+
 
   ajoutNewCour(): void {
     this.courSelectionne = new Cours();

@@ -28,7 +28,8 @@ const routes: Routes = [
   {path: 'profil', component: ProfilComponent, canActivate: [AuthGuard]},
   {path: 'cours', component: CourEleveComponent},
   {path: 'cours/info-prof/:id', component: ProfDetailComponent},
-  {path: 'home', component: HomeComponent}
+  {path: 'home', component: HomeComponent},
+  {path: 'motpasseOublie', component: ForgotPasswordComponent}
 
 ];
 

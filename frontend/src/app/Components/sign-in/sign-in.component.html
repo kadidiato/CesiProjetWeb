@@ -32,11 +32,11 @@
               <div class="md-form pb-3">
                 <input class="form-control" formControlName="password" id="elegantFormPasswordEx" mdbInput
                        name="password" type="password">
-                <label class="password" for="elegantFormPasswordEx"> <a routerLink="#"> Mot de passe oublie </a></label>
+                <label class="password" for="elegantFormPasswordEx"> <a [routerLink]="['/motpasseOublie']"> Mot de passe oublie </a></label>
               </div>
               <br>
               <div class="text-center mb-3">
-                <button [disabled]="(signInForm.invalid  && !signInForm.get('type') )" block="true" class="z-depth-1a waves-light"
+                <button [disabled]="(signInForm.invalid  && !signInForm.get('type') )" block="true" class="z-depth-1a waves-light btn btn-info"
                         mdbBtn rounded="true"
                         type="submit"
                           >Connexion
@@ -44,7 +44,7 @@
               </div>
             </div>
           </form>
-          <span class="text-danger">{{ errorMessage }}</span>
+          <p style=" text-align: center;height: 15px; color: red;" >{{ errorMessage }}</p>
           <!--Body-->
 
 
@@ -53,7 +53,7 @@
 
           <div class="row my-3 d-flex justify-content-center">
             <!--Google +-->
-            <button type="button"  class="btn btn-lg btn-block omb_btn-google" id ="google"
+            <button type="button"  class="btn btn-danger"  id ="google"
                     (click)="loginGoogle()" [disabled]="!signInForm.get('type')">
               <mdb-icon class="blue-text" fab icon="google-plus"></mdb-icon>
             </button>

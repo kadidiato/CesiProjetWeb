@@ -4,11 +4,25 @@
 label{
   margin-top: 5px;
 }
-
+#error{
+  background-color: red($color: #000000);
+}
+body > .container{
+  padding-top: 60px;
+}
 html,
 body {
  
-  font-family: 'Cambria', sans-serif;
+  font-family: 'Cambria', sans-serif; 
+  height: 100%;
+  width: 100%;
+  
+}
+#corps{
+ // background-image: url("/assets/photo.jpg");
+  background-size: cover;
+ background-repeat: no-repeat;
+ min-height:90%;
 }
 h1,
 h2,
