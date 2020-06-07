@@ -19,10 +19,11 @@ body {
   
 }
 #corps{
- // background-image: url("/assets/photo.jpg");
+  background-image: url("/assets/blue2.png");
   background-size: cover;
- background-repeat: no-repeat;
- min-height:90%;
+ //background-repeat: no-repeat;
+  //min-height:-45%;
+  height: 100%;
 }
 h1,
 h2,
