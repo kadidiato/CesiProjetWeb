@@ -1,13 +1,13 @@
 footer{
-  position: relative;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+  position: absolute;
+  padding-bottom: 0px;
+  left: 0;
+  width: 100%;
   background-color: #0c335f;
   color: white;
   text-align: center;
   margin-top: 100px;
- // height: 200px;
+  //height: 200px;
 }
 
 ul{
@@ -29,4 +29,12 @@ a{
 
 .linky{
   cursor: pointer;
+}
+
+.linky:hover{
+  color: #e52a3a;
+}
+
+a:hover{
+  color: #e52a3a;
 }

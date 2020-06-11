@@ -6,8 +6,8 @@
         <br>
         <h5>Contactez nous</h5>
         <ul>
-          <li class="linky"><a (click)="googleMap()"><i class="fas fa-map-marker-alt"></i> 7 chemin du vieux chaines, Meylan 38710</a></li>
-          <li class="linky"><a><i class="fas fa-phone"></i> 07.51.23.54.87</a></li>
+          <li class="linky"><a (click)="googleMap()"><i class="fas fa-map-marked-alt"></i> 7 chemin du vieux chaines, Meylan 38710</a></li>
+          <li class="linky"><a href="tel:+3751235487"><i class="fas fa-phone-square-alt"></i> (+33 ou 0)7.51.23.54.87</a></li>
           <li class="linky"><a (click)="mailMe()"><i class="fas fa-envelope"></i> Contact-cours@gmail.com</a></li>
         </ul>
       </div>
@@ -19,7 +19,7 @@
         <h5>Légales</h5>
         <ul>
           <!-- button Privacy-->
-          <li data-toggle="modal" data-target="#Terms">Termes</li>
+          <li data-toggle="modal" data-target="#Terms" class="linky">Termes</li>
 
           <!-- Modal Terms-->
           <div class="modal fade" id="Terms" tabindex="-1" role="dialog" aria-labelledby="TermsContent" aria-hidden="true">
@@ -70,7 +70,7 @@
           </div>
 
           <!-- button Privacy-->
-          <li data-toggle="modal" data-target="#Privacy">Confidentialité</li>
+          <li data-toggle="modal" data-target="#Privacy" class="linky">Confidentialité</li>
 
           <!-- Modal Privacy-->
           <div class="modal fade" id="Privacy" tabindex="-1" role="dialog" aria-labelledby="PrivacyContent" aria-hidden="true">
@@ -106,8 +106,6 @@
                     bancaire ni de votre IBAN donc tout types de demande de transaction sera considéré comme un fraude et vous pourriez poursuivre la personne en justice.
                   </p>
                   <br>
-
-
                 </div>
 
                 <!--Modal privacy footer-->
@@ -125,22 +123,24 @@
     <div class="col">
       <div class="container">
         <br>
-        <h5>Suivez nous</h5>
+        <h5>Suivez nous sur</h5>
         <div class="row">
-          <div class="col"><a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a></div>
-          <div class="col"><a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a></div>
-          <div class="col"><a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i></a></div>
-          <div class="col"><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></div>
-          <div class="col"><a href="https://www.pinterest.com"><i class="fab fa-pinterest"></i></a></div>
-          <div class="col"><a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a></div>
+          <div class="col"><a class="linky" (click)="LinkTwitter()"><i class="fab fa-twitter"></i></a></div>
+          <div class="col"><a class="linky" (click)="LinkFacebook()"><i class="fab fa-facebook"></i></a></div>
+          <div class="col"><a class="linky" (click)="LinkLinkedin()"><i class="fab fa-linkedin"></i></a></div>
+          <div class="col"><a class="linky" (click)="LinkInstagram()"><i class="fab fa-instagram"></i></a></div>
+          <div class="col"><a class="linky" (click)="LinkPinterest()"><i class="fab fa-pinterest"></i></a></div>
+          <div class="col"><a class="linky" (click)="LinkYoutube()"><i class="fab fa-youtube"></i></a></div>
         </div>
-        <div class="row">
-          <div class="col"></div>
-          <div class="col" style="text-align: right;font-size: 12px; margin-bottom: 0px;"><br/><br/>© Copyright 2020</div>
-        </div>
+
+      </div>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col" style="text-align: center;font-size: 9px; margin-bottom: 0px;"><br/><br/>© Copyright 2020</div>
+        <div class="col"></div>
       </div>
     </div>
-
   </div>
+
 </footer>
 

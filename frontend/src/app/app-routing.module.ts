@@ -9,8 +9,10 @@ import { DetailCourComponent } from "./Components/historique-cours/detail-cour/d
 import { ProfilComponent } from "./Components/profil/profil.component";
 import { CourEleveComponent } from "./Components/cour-eleve/cour-eleve.component";
 import { AuthGuard } from "./Service/auth.guard";
-import {HomeComponent} from './Components/home/home.component';
-import {ProfDetailComponent} from "./Components/cour-eleve/prof-detail/prof-detail.component";
+import { HomeComponent } from './Components/home/home.component';
+import { ProfDetailComponent } from "./Components/cour-eleve/prof-detail/prof-detail.component";
+import { RechercheComponent} from "./Components/recherche/recherche.component";
+import {ContactsComponent} from "./Components/contacts/contacts.component";
 
 
 const routes: Routes = [
@@ -28,7 +30,9 @@ const routes: Routes = [
   {path: 'profil', component: ProfilComponent, canActivate: [AuthGuard]},
   {path: 'cours', component: CourEleveComponent},
   {path: 'cours/info-prof/:id', component: ProfDetailComponent},
-  {path: 'home', component: HomeComponent}
+  {path: 'home', component: HomeComponent},
+  {path: 'recherche', component: RechercheComponent},
+  {path: 'contacts', component: ContactsComponent}
 
 ];
 

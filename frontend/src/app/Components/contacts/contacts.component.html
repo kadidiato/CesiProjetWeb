@@ -1,5 +1,6 @@
-<h2 style="color: #0c335f; font-family: Verdana, Geneva, Tahoma, sans-serif;">Vos contacts :</h2>
-<div class="container-fluid">
+<div class="container">
+  <h2 style="color: #0c335f; font-family: Verdana, Geneva, Tahoma, sans-serif;">Vos contacts :</h2>
+  <div class="container-fluid">
     <div class="row">
       <div class="col-5">
         <table class="table table-hover">
@@ -15,14 +16,12 @@
           </tbody>
         </table>
       </div>
-  
+
       <!--Spacer-->
       <div class="col-1">
       </div>
-      <!--end Spacer-->
-      <!--Affichage du profile à droite si c'est la bonne personne-->
-  
 
+      <!--carte de contacte à droite de l'écran-->
       <div class="col-6">
         <div class="container-fluid">
           <div class="card">
@@ -30,38 +29,16 @@
             <div class="card-body">
               <h4 class="card-title">John Pitt</h4>
               <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-              <a href="#" class="btn btn-outline-primary btn-sm">Consulter les créneaux disponible</a>
+              <button type="button" class="btn btn-outline-primary" (click)="mailTo()">Contacter par mail: <i class="fas fa-at"></i>Cessna J.<!--nom personne--></button>
             </div>
           </div>
         </div>
-  
-        <!--<div class="container-fluid" >
-        <h2>{{ComponentTitle}}</h2>
-        <div class="row">
-          <div *ngFor='let d of contact'>
-            <div class="col-xl-2">
-              <p>{{ d.Id }}</p>
-              <div class="card" style="width:400px">
-                <img class="card-img-top" src="https://vignette.wikia.nocookie.net/wiki-titeuf/images/9/91/Nadia_image_player_432_324.jpg/revision/latest/scale-to-width-down/340?cb=20120624163803&path-prefix=fr" alt="Card image" style="width:100%">
-                <div class="card-body">
-                  <h4 class="card-title" style="font-weight: bold; font-size: 16px; color:#0C335f ;">{{d.Name}} {{d.Lastname}}</h4>
-                  <p class="card-text" style="color: #446b97;">{{d.Address}} {{d.Zip}} {{d.Country}} </p>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-outline-primary btn-sm">See Profile</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm">Take Meeting</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>-->
       </div>
     </div>
-  
   </div>
-  
-  
-  
-  
-  
+</div>
+
+
+
+
+
