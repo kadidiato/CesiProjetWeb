@@ -81,6 +81,7 @@ export class SignInComponent implements OnInit {
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then(
       u => {
         this.sendToServeur(this.type);
+        this.route.navigate(['/profil']);
         /*this.message.add({severity:'success',
           summary:`Bienvenue `,
           detail:'Vous pouvez commander vos films et plats 😁!'});
@@ -99,12 +100,21 @@ export class SignInComponent implements OnInit {
   sendToServeur(type) {
     this.afAuth.user.subscribe(eleve => {
       localStorage.setItem('type', this.type);
-    //  const i = eleve.displayName.indexOf(' '); // couper en 2 displayname pour avoir le prenom et le nom
+      let i;
+      let nomEleve;
+      let prenomEleve;
+      if (eleve.displayName != null) {
+        i = eleve.displayName.indexOf(' '); // couper en 2 displayname pour avoir le prenom et le nom
+      }
       if (type === 'eleve') {
+        if (eleve.displayName != null) {
+          nomEleve = eleve.displayName.substr(0, i);
+          prenomEleve = eleve.displayName.substr(i);
+        }
         this.elevesService.getOrSave({
           // variable que le serveur s'attend a recevoir
-         // nomEleve: eleve.displayName.substr(0, i),
-         // prenomEleve: eleve.displayName.substr(i),
+          nomEleve,
+          prenomEleve,
           mailEleve: eleve.email,
           photo: eleve.photoURL,
           uid: eleve.uid,
@@ -115,10 +125,16 @@ export class SignInComponent implements OnInit {
         this.route.navigate(['/profil']);
         this.document.location.reload();
       } else if (type === 'prof') {
+        let nomProf;
+        let prenomProf;
+        if (eleve.displayName != null) {
+          nomProf = eleve.displayName.substr(0, i);
+          prenomProf = eleve.displayName.substr(i);
+        }
         this.profService.getOrSave({
           // variable que le serveur s'attend a recevoir
-          //nomProf: eleve.displayName.substr(0, i),
-          //prenomProf: eleve.displayName.substr(i),
+          nomProf,
+          prenomProf,
           mailProf: eleve.email,
           photo: eleve.photoURL,
           uid: eleve.uid,

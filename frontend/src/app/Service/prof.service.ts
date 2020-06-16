@@ -38,4 +38,8 @@ export class ProfService {
   updateProf(prof): Observable<Prof> {
     return this.http.put<Prof>(`${this.url}/profs`, prof);
   }
+
+  getPofCourses(id) {
+    return this.http.get(`${this.url}/profCours/${id}`)
+  }
 }

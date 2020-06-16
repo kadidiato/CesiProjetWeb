@@ -20,21 +20,9 @@ export class CoursService {
   getCoursBe(): Observable<any> {
     return this.http.get(`${this.api_redirect}/cours`);
   }
-   /**
-   * recuperation tous les cours d'un prof donnee  en connaissant son id tslint:disable-next-line:no-redundant-jsdoc
-   * @param__id
-   */
-   async getAllCoursProf(profId :string):  Promise<any> {
-    return new Promise<any>(((resolve, reject) => {
-      this.http.get(`${this.api_redirect}/cours?id=${profId}`, {responseType: 'text'}).toPromise().then(
-        res => {
-          console.log('l id cours' + profId);
-          resolve(JSON.parse(res));
-        }, rej => {
-          reject(rej);
-        }
-      );
-    }));
+
+  getCourByProfId(profId: string): Observable<any> {
+    return this.http.get(`${this.api_redirect}/profCours/${profId}`)
   }
 
   /**
@@ -103,4 +91,3 @@ export class CoursService {
   }
 
 }
-

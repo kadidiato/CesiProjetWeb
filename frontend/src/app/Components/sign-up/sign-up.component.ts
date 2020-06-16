@@ -37,7 +37,7 @@ export class SignUpComponent implements OnInit {
     const password = this.signUpForm.get('password').value;
     this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(
       () => {
-        this.route.navigate(['/listCours']);
+        this.route.navigate(['/sign-in']);
 
       },
       (error) => {

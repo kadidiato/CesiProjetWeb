@@ -13,38 +13,41 @@
           <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
 
             <div class="md-form mb-2">
+              <label for="type">Type</label>
               <select class="browser-default custom-select" formControlName="type" id="type"
                       name="type">
                 <option [defaultSelected]="true" disabled value="">Selectionnez votre catégorie</option>
                 <option value="prof">Prof</option>
                 <option value="eleve">Elève</option>
               </select>
-              <label for="type">Type</label>
+             
             </div>
 
-            <div >
+            <div>
               <div class="md-form">
+                <label for="email">Email</label>
                 <input class="form-control" formControlName="email" id="email"
                        mdbInput name="email" type="text">
-                <label for="email">Email</label>
+               
               </div>
 
               <div class="md-form pb-3">
+                <label for="email">Mot de passe</label>
                 <input class="form-control" formControlName="password" id="elegantFormPasswordEx" mdbInput
                        name="password" type="password">
-                <label class="password" for="elegantFormPasswordEx"> <a [routerLink]="['/motpasseOublie']"> Mot de passe oublie </a></label>
+                <label class="password" for="elegantFormPasswordEx"> <a routerLink="#"> Mot de passe oublie </a></label>
               </div>
               <br>
               <div class="text-center mb-3">
-                <button [disabled]="(signInForm.invalid  && !signInForm.get('type') )" block="true" class="z-depth-1a waves-light btn btn-info"
+                <button [disabled]="signInForm.invalid" block="true" class="z-depth-1a waves-light btn btn-info"
                         mdbBtn rounded="true"
                         type="submit"
-                          >Connexion
+                >Connexion
                 </button>
               </div>
             </div>
           </form>
-          <p style=" text-align: center;height: 15px; color: red;" >{{ errorMessage }}</p>
+          <span class="text-danger">{{ errorMessage }}</span>
           <!--Body-->
 
 
@@ -53,7 +56,7 @@
 
           <div class="row my-3 d-flex justify-content-center">
             <!--Google +-->
-            <button type="button"  class="btn btn-danger"  id ="google"
+            <button type="button"  class="btn btn-lg btn btn-danger" id ="google" 
                     (click)="loginGoogle()" [disabled]="!signInForm.get('type')">
               <mdb-icon class="blue-text" fab icon="google-plus"></mdb-icon>
             </button>

@@ -3,8 +3,9 @@ import {CoursService} from "../../Service/cours.service";
 import {Cours} from "../../Interface/cours";
 import {AuthService} from "../../Service/auth.service";
 import {ConfirmationService, MessageService} from "primeng";
-import { Prof } from 'src/app/Interface/Prof';
-import { ProfService } from 'src/app/Service/prof.service';
+import {AngularFireAuth} from "@angular/fire/auth";
+import {ProfService} from "../../Service/prof.service";
+import {Prof} from "../../Interface/Prof";
 
 @Component({
   selector: 'app-list-cours',
@@ -14,28 +15,37 @@ import { ProfService } from 'src/app/Service/prof.service';
 export class HistoriqueCoursComponent implements OnInit {
 
   cours: Cours[];
+  prof: Prof;
   afficherDialog = false;
   courSelectionne: Cours;
-  prof: Prof;
 
   constructor(private coursServiece: CoursService, private confirmService: ConfirmationService,
-              private msgService: MessageService, private  profService: ProfService ) {
+              private msgService: MessageService, private afAuth: AngularFireAuth,
+              private profService: ProfService) {
   }
 
   ngOnInit(): void {
-   this.init();
-   //this.getCoursesPof();
+    this.init();
   }
 
   async init() {
-    this.coursServiece.getCoursBe().subscribe(res => {
+    this.afAuth.user.subscribe(u => {
+        this.profService.getProfByUid(u.uid).subscribe((response) => {
+          this.prof = response;
+          this.getCoursByProfId(this.prof.id);
+
+        });
+    })
+
+  }
+
+  getCoursByProfId(id: string) {
+    this.coursServiece.getCourByProfId(id).subscribe(res => {
       this.cours = res;
-      console.log(this.cours);
     }, err => {
       console.log('error de recup');
     });
   }
-
 
   ajoutNewCour(): void {
     this.courSelectionne = new Cours();

@@ -70,13 +70,13 @@ function save(req, res, next) {
         where: {uid: eleve.uid}
     }).then((eleveFound) => {
         if (!eleveFound) {
-            models.Prof.create(eleve).then((newProf) => {
-                if (!newProf) {
+            models.Eleve.create(eleve).then((newEleve) => {
+                if (!newEleve) {
                     return res.status(500).json({
                         message: 'Une erreur est survenue lors de la création du prof'
                     });
                 }
-                return res.status(201).json(newProf);
+                return res.status(201).json(newEleve);
             }).catch((err) => {
                 return res.status(500).json({
                     status: 'error',
