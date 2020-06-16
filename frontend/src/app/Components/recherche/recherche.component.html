@@ -1,0 +1,135 @@
+<div class="container">
+  <div class="card" style="width:90%; margin-top: 20px;padding: 5px;box-shadow: 2.5px 2.5px #D4d4d4;margin-left: auto;margin-right: auto;">
+  <h4 style="color: #0c335f; font-family: Verdana, Geneva, Tahoma, sans-serif; margin-right: auto; margin-left: auto;">
+    N'hésitez pas à mettre des filtres pour optimiser votre recherche :
+  </h4>
+    <hr style="width: 50%; margin-left: auto; margin-right: auto;">
+    <div class="card-body" style="margin-top: -30px;">
+      <div class="row">
+        <!--catégorisation-->
+        <div class="col-lg">
+          <br>
+          <label>Catégories :</label>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-check">
+                <label class="form-check-label" for="radio1">
+                  <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Cours
+                </label>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-check">
+                <label class="form-check-label" for="radio2">
+                  <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Disponibilité
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg">
+          <br>
+          <!--list des niveaux-->
+
+          <label for="niveau">Niveaux disponible :</label>
+          <select class="form-control" id="niveau" name="niveau">
+            <option>Ingenieur</option>
+            <option>Master</option>
+            <option>Licence</option>
+            <option>Bts</option>
+            <option>Terminale</option>
+            <option>1 ère</option>
+            <option>2 nde</option>
+            <option>3 ème</option>
+            <option>4 ème</option>
+            <option>5 ème</option>
+            <option>6 ème</option>
+            <option>CM 2</option>
+            <option>CM 1</option>
+            <option>CE 2</option>
+            <option>CE 1</option>
+            <option>CP 2</option>
+            <option>CP 1</option>
+          </select>
+        </div>
+
+        <div class="col-lg">
+          <br>
+          <!--list des Localisation-->
+
+          <label for="localisation">Localisation :</label>
+          <select class="form-control" id="localisation" name="localisation">
+            <option>Nice (06)</option>
+            <option>Troyes (10)</option>
+            <option>Carcassonne (11)</option>
+            <option>Marseille (13)</option>
+            <option>Caen, Honfleur (14)</option>
+            <option>Angoulême (16)</option>
+            <option>La Rochelle, Rochefort (17)</option>
+            <option>Bourges (18)</option>
+            <option>Dijon (21)</option>
+            <option>Besançon, Montbéliard (25)</option>
+            <option>Valence (26)</option>
+            <option>Chartres (28)</option>
+            <option>Brest (29)</option>
+            <option>Nîmes (30)</option>
+            <option>Toulouse (31)</option>
+            <option>Bordeaux (33)</option>
+            <option>Montpellier (34)</option>
+            <option>Renne, St-Malo (35)</option>
+            <option>Tours (37)</option>
+            <option>Grenoble (38)</option>
+            <option>Saint-Etienne (42)</option>
+            <option>Nantes (44)</option>
+            <option>Orléans (45)</option>
+            <option>Angers (49)</option>
+            <option>Cherbourg (50)</option>
+            <option>Reims (51)</option>
+            <option>Nancy (54)</option>
+            <option>Lorient, Belle-île-en-Mer (56)</option>
+            <option>Metz, Thionville (57)</option>
+            <option>Lille, Douai-Lens (59)</option>
+            <option>Calais, Béthune (62)</option>
+            <option>Clermont-Ferrand (63)</option>
+            <option>Pau, Bayonne, Biarritz (64)</option>
+            <option>Perpignan (66)</option>
+            <option>Strasbourg (67)</option>
+            <option>Colmar (68), Mulhouse</option>
+            <option>Lyon (69)</option>
+            <option>Macon (71)</option>
+            <option>Le Mans (72)</option>
+            <option>Chambéry (73)</option>
+            <option>Annecy, Annemasse (74)</option>
+            <option>Paris (75)</option>
+            <option>Rouen, Dieppe, La Havre (76)</option>
+            <option>Amiens (80)</option>
+            <option>Toulon (83)</option>
+            <option>Avignon (84)</option>
+            <option>Poitiers (86)</option>
+            <option>Limoges (87)</option>
+          </select>
+        </div>
+
+        <!--recherche-->
+        <div class="col-lg">
+          <br>
+          <label>Recherche :</label>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Que cherchez vous?" aria-label="Que cherchez vous ?" aria-describedby="button-addon4">
+            <div class="input-group-append" id="button-addon4">
+               <!--bouton de recherche-->
+              <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+
+<div class="container-fluid" style="height: 1024px">
+  <router-outlet></router-outlet>
+</div>

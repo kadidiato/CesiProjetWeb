@@ -25,6 +25,11 @@
       <li class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect routerLink="cours"> <i class="fa fa-book" ></i> Cours</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="recherche"  style="color: #0c335f; font-family: Verdana, Geneva, Tahoma, sans-serif;" ><i class="fas fa-search" ></i> Recherche</a>
+      </li>
+
+
 
       <!-- Dropdown -->
       <!--  <li class="nav-item dropdown" dropdown>
@@ -47,7 +52,7 @@
         <a class="nav-link">
           <div class="btn-group" mdbDropdown>
 
-            <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect  style="color: #0c335f; font-family: Verdana, Geneva, Tahoma, sans-serif;" >
               <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span></a>
             <div class="dropdown-menu dropdown-menu-right dropdown-primary">
               <a *ngIf="!authService.isAuth" [routerLink]="['/sign-in']" class="dropdown-item">Connexion</a>
